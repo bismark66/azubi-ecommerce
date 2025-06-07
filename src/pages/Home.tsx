@@ -9,6 +9,9 @@ import Headphones from "../assets/home/headphones.png";
 import Earphones from "../assets/shared/desktop/image-category-thumbnail-earphones.png";
 import CirclePattern from "../assets/home/desktop/pattern-circles.svg";
 import AppButton from "../components/atoms/AppButton";
+import ZX7Speaker from "../assets/home/desktop/image-speaker-zx7.jpg";
+import ImageEarphone from "../assets/home/desktop/image-earphones-yx1.jpg";
+import GuyWithGear from "../assets/shared/desktop/image-best-gear.jpg"
 
 function Home() {
   return (
@@ -146,6 +149,148 @@ function Home() {
             </Grid.Col>
           </Grid>
         </Box>
+        <div style={{ height: 100 }}></div>
+        {/* ZX7 Speaker Section */}
+        <Box style={{ height: 320, position: "relative" }}>
+  {/* Background Image */}
+  <Box
+    style={{
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundImage: `url(${ZX7Speaker})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      zIndex: 0,
+      borderRadius: 12,
+    }}
+  />
+  
+  {/* Content Grid */}
+  <Box
+    style={{
+      position: "relative",
+      zIndex: 1,
+      height: "100%",
+      display: "flex",
+      alignItems: "center",
+      padding: 40,
+    }}
+  >
+    <div style={{ maxWidth: "50%" }}>
+      <Title style={{ fontSize: 32, fontWeight: 700, marginBottom: 16 }}>
+        ZX7 SPEAKER
+      </Title>
+      <AppButton variant="outline" c={"primary.0"} color="primary.0" style={{ borderRadius: 0, maxWidth: 160 }}>
+        SEE PRODUCT
+      </AppButton>
+    </div>
+  </Box>
+</Box>
+
+
+    <div style={{ height: 100 }}></div>
+     <Box>
+          <Grid gutter={"xl"}>
+            <Grid.Col 
+              span={6} 
+              style={{
+                // maxWidth: 540,
+                padding: 0,
+                borderRadius: 12
+              }}
+            >
+              <img 
+                src={ImageEarphone} 
+                alt="YX1 Earphones" 
+                style={{ 
+                  width: "100%",
+                  height: "100%",
+                  borderRadius: 12,
+                  objectFit: "cover"
+                }} 
+              />
+            </Grid.Col>
+            <Grid.Col 
+              span={6} 
+              style={{ 
+                display: "flex", 
+                alignItems: "flex-start", 
+                justifyContent: "center",
+                flexDirection: "column",
+                backgroundColor: "#979797",
+                // maxWidth: 540,
+                borderRadius: 12,
+                padding: "40px"
+              }}
+            >
+              <Title style={{ fontSize: 32, fontWeight: 700, marginBottom: 16 }}>
+                YX1 EARPHONES
+              </Title>
+              <AppButton 
+                variant="outline" 
+                c="primary.0" 
+                color="primary.0"
+                style={{ borderRadius: 0, maxWidth: 160 }}
+              >
+                SEE PRODUCT
+              </AppButton>
+            </Grid.Col>
+          </Grid>
+        </Box>
+        
+        <div style={{ height: 300 }}></div>
+        <Box>
+          <Grid gutter={"xl"}>
+            <Grid.Col 
+              span={6} 
+              style={{ 
+                display: "flex", 
+                alignItems: "flex-start", 
+                justifyContent: "center",
+                flexDirection: "column",
+                // backgroundColor: "#979797",
+                // maxWidth: 540,
+                borderRadius: 12,
+                padding: "40px"
+              }}
+            >
+              <div style={{maxWidth: 445}}>
+              <Title style={{ fontSize: 32, fontWeight: 700, marginBottom: 16 }}>
+                BRINGING YOU THE <br/> <span style={{ color: "#D87D4A" }}> BEST</span> AUDIO GEAR
+              </Title>
+              <Text c="dimmed" mt="md" style={{ maxWidth: 445 }}>
+                Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some of the fantastic people who make Audiophile the best place to buy your portable audio equipment.
+                </Text>
+              </div>
+            </Grid.Col>
+            <Grid.Col 
+              span={6} 
+              style={{
+                // maxWidth: 540,
+                padding: 0,
+                borderRadius: 12
+              }}
+            >
+              <img 
+                src={GuyWithGear} 
+                alt="YX1 Earphones" 
+                style={{ 
+                  width: "100%",
+                  height: "100%",
+                  borderRadius: 12,
+                  objectFit: "cover"
+                }} 
+              />
+            </Grid.Col>
+          </Grid>
+        </Box>
+
+
+
+
       </Container>
     </>
   );
