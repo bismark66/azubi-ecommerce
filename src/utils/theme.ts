@@ -11,7 +11,7 @@ export const Apptheme = createTheme({
       "#404040",
       "#4a4a4a",
       "#191919",
-      "#5d5d5d",
+      "#f1f1f1",
       "#000000", // darkest
     ],
     secondary: [
