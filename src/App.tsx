@@ -11,7 +11,7 @@ import AppHeader from "./components/molecules/Header";
 import { AppFooter } from "./components/molecules/Footer";
 import Card from "./components/molecules/Card";
 import CategoryCard from "./components/molecules/categoryCard";
-import Hero from "./components/molecules/Hero";
+import Hero from "./components/molecules/HomeHero";
 
 function App() {
   const [count, setCount] = useState(0);
