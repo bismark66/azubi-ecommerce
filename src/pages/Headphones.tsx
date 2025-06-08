@@ -1,6 +1,6 @@
 import React from "react";
 import CTA from "../components/molecules/CTA";
-import { Box, Center, Container, Grid, Title, Text } from "@mantine/core";
+import { Box, Container, Grid, Title, Text } from "@mantine/core";
 import Hero from "../components/atoms/Hero";
 import CategoryCard from "../components/molecules/categoryCard";
 import Speakers from "../assets/home/desktop/image-speaker-zx9.png";
