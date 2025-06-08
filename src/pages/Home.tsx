@@ -12,13 +12,15 @@ import AppButton from "../components/atoms/AppButton";
 import ZX7Speaker from "../assets/home/desktop/image-speaker-zx7.jpg";
 import ImageEarphone from "../assets/home/desktop/image-earphones-yx1.jpg";
 import CTA from "../components/molecules/CTA";
+import { useNavigate } from "react-router-dom";
 
 
 function Home() {
+  const navigate = useNavigate();
   return (
     <>
       <Hero>
-        <HomeHero />
+        <HomeHero handleClick={() => { navigate("/products/4") }} />
       </Hero>
       {/* cardcategory section */}
       <Container size={"lg"} mt={60} mb={60}>
@@ -31,7 +33,7 @@ function Home() {
               justifyContent: "center",
             }}
           >
-            <CategoryCard image={Headphones} title="HEADPHONES" />
+            <CategoryCard image={Headphones} title="HEADPHONES" onShopClick={() => { navigate("/products/3") }} />
           </Grid.Col>
           <Grid.Col
             span={4}
@@ -41,7 +43,7 @@ function Home() {
               justifyContent: "center",
             }}
           >
-            <CategoryCard image={Speakers} title="SPEAKERS" />
+            <CategoryCard image={Speakers} title="SPEAKERS" onShopClick={() => { navigate("/products/6")}} />
           </Grid.Col>
           <Grid.Col
             span={4}
@@ -51,7 +53,7 @@ function Home() {
               justifyContent: "center",
             }}
           >
-            <CategoryCard image={Earphones} title="EARPHONES" />
+            <CategoryCard image={Earphones} title="EARPHONES" onShopClick={() => { navigate("/products/1")}} />
           </Grid.Col>
         </Grid>
         <div style={{ height: 100 }}></div>
@@ -184,7 +186,7 @@ function Home() {
       <Title style={{ fontSize: 32, fontWeight: 700, marginBottom: 16 }}>
         ZX7 SPEAKER
       </Title>
-      <AppButton variant="outline" c={"primary.0"} color="primary.0" style={{ borderRadius: 0, maxWidth: 160 }}>
+      <AppButton variant="outline" c={"primary.0"} color="primary.0" style={{ borderRadius: 0, maxWidth: 160 }} handleClick={() => { navigate("/products/5")}}>
         SEE PRODUCT
       </AppButton>
     </div>
@@ -235,6 +237,7 @@ function Home() {
                 c="primary.0" 
                 color="primary.0"
                 style={{ borderRadius: 0, maxWidth: 160 }}
+                handleClick={() => { navigate("/products/1") }}
               >
                 SEE PRODUCT
               </AppButton>
