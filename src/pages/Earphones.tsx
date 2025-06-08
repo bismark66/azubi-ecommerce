@@ -8,8 +8,10 @@ import Headphones from "../assets/home/headphones.png";
 import Earphone from "../assets/shared/desktop/image-category-thumbnail-earphones.png";
 import AppButton from "../components/atoms/AppButton";
 import Earphine from "../assets/shared/desktop/Earphone.png"
+import { useNavigate } from "react-router-dom";
 
 function Earphones() {
+  const navigate = useNavigate();
   return  <>
         <Hero>
         <Box
@@ -98,7 +100,7 @@ function Earphones() {
               <Text mt="md" c="dimmed" mb={"md"}>
                 Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.
               </Text>
-              <AppButton color="secondary.5">SEE PRODUCT</AppButton>
+              <AppButton color="secondary.5" handleClick={() => navigate("/products/1")}>SEE PRODUCT</AppButton>
             </div>
           </Grid.Col>
         </Grid>
