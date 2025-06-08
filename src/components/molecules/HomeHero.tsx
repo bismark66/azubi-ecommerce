@@ -1,18 +1,6 @@
-import { IconCheck } from "@tabler/icons-react";
-import {
-  Button,
-  Container,
-  Group,
-  Image,
-  List,
-  Text,
-  ThemeIcon,
-  Title,
-} from "@mantine/core";
-// import image from "./image.svg";
+import { Container, Group, Text, Title } from "@mantine/core";
 import classes from "../../styles/HomeHero.module.css";
 import AppButton from "../atoms/AppButton";
-import HeroImage from "../../assets/home/mobile/image-header.jpg";
 
 export default function HomeHero() {
   return (
