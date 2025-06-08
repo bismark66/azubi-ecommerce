@@ -4,11 +4,23 @@ import type { ButtonProps } from "@mantine/core";
 
 interface AppButtonProps extends ButtonProps {
   handleClick?: () => void;
+  buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
 }
 
-function AppButton({ children, handleClick, ...props }: AppButtonProps) {
+function AppButton({
+  children,
+  handleClick,
+  buttonProps = {},
+  ...props
+}: AppButtonProps) {
   return (
-    <Button variant="filled" color="secondary" {...props} onClick={handleClick}>
+    <Button
+      variant="filled"
+      color="secondary"
+      {...props}
+      {...buttonProps} // Spread buttonProps after props to allow overrides
+      onClick={handleClick}
+    >
       {children}
     </Button>
   );
