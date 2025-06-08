@@ -30,11 +30,11 @@ export const Apptheme = createTheme({
       "#ffffff", // lightest
       "#fefefe",
       "#fcfcfc",
-      "#fafafa",
+      "#e9e9e9",
       "#f7f7f7",
       "#f4f4f4",
       "#f1f1f1", // #F1F1F1
-      "#dddddd",
+      "#979797",
       "#c9c9c9",
       "#b5b5b5",
     ],
