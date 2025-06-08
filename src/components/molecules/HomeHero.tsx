@@ -2,7 +2,11 @@ import { Container, Group, Text, Title } from "@mantine/core";
 import classes from "../../styles/HomeHero.module.css";
 import AppButton from "../atoms/AppButton";
 
-export default function HomeHero() {
+type HomeHeroProps = {
+  handleClick?: () => void;
+};
+
+export default function HomeHero({ handleClick }: HomeHeroProps) {
   return (
     <Container fluid className={classes.hero}>
       <Container size="lg">
@@ -55,7 +59,11 @@ export default function HomeHero() {
             </List> */}
 
             <Group mt={30}>
-              <AppButton size="lg" color="secondary.2">
+              <AppButton
+                size="lg"
+                color="secondary.2"
+                handleClick={handleClick}
+              >
                 See product
               </AppButton>
               {/* <Button radius="xl" size="md" className={classes.control}>
