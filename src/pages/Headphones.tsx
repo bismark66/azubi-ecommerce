@@ -10,8 +10,10 @@ import WhiteHeadphone from "../assets/shared/desktop/whiteHeadphones.png";
 import AppButton from "../components/atoms/AppButton";
 import BlackHeadphones from "../assets/shared/desktop/image-category-thumbnail-headphones.png";
 import BlackGamingHeadphone from "../assets/shared/desktop/BlackGamingHeadphones.png";
+import { useNavigate } from "react-router-dom";
 
 function Headphones() {
+  const navigate = useNavigate();
   return (
     <>
       <Hero>
@@ -103,7 +105,12 @@ function Headphones() {
                 reproducing the balanced depth and precision of studio-quality
                 sound.
               </Text>
-              <AppButton color="secondary.5">SEE PRODUCT</AppButton>
+              <AppButton
+                color="secondary.5"
+                handleClick={() => navigate("/products/4")}
+              >
+                SEE PRODUCT
+              </AppButton>
             </div>
           </Grid.Col>
         </Grid>
@@ -138,7 +145,12 @@ function Headphones() {
                 mixing engineers, and music aficionados alike in studios and on
                 the go.
               </Text>
-              <AppButton color="secondary.5">SEE PRODUCT</AppButton>
+              <AppButton
+                color="secondary.5"
+                handleClick={() => navigate("/products/3")}
+              >
+                SEE PRODUCT
+              </AppButton>
             </div>
           </Grid.Col>
           <Grid.Col
@@ -226,7 +238,12 @@ function Headphones() {
                 durable versatile wireless headset is a brilliant companion at
                 home or on the move.
               </Text>
-              <AppButton color="secondary.5">SEE PRODUCT</AppButton>
+              <AppButton
+                color="secondary.5"
+                handleClick={() => navigate("/products/2")}
+              >
+                SEE PRODUCT
+              </AppButton>
             </div>
           </Grid.Col>
         </Grid>
