@@ -17,7 +17,7 @@ import HeroImage from "../../assets/home/mobile/image-header.jpg";
 export default function HomeHero() {
   return (
     <Container fluid className={classes.hero}>
-      <Container size="xl">
+      <Container size="lg">
         <div className={classes.inner}>
           <div className={classes.content}>
             <Title
