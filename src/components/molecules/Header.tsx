@@ -1,15 +1,5 @@
+import { IconShoppingCart } from "@tabler/icons-react";
 import {
-  //   IconBook,
-  //   IconChartPie3,
-  //   IconChevronDown,
-  //   IconCode,
-  //   IconCoin,
-  //   IconFingerprint,
-  //   IconNotification,
-  IconShoppingCart,
-} from "@tabler/icons-react";
-import {
-  Anchor,
   Box,
   Burger,
   Button,
@@ -19,16 +9,13 @@ import {
   Divider,
   Drawer,
   Group,
-  HoverCard,
   ScrollArea,
-  SimpleGrid,
   Text,
   ThemeIcon,
   UnstyledButton,
-  useMantineTheme,
+  //   useMantineTheme,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-// import { MantineLogo } from '@mantinex/mantine-logo';
 import classes from "../../styles/Header.module.css";
 import { NavLink } from "react-router-dom";
 const mockdata = [
@@ -68,13 +55,13 @@ export default function AppHeader() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
-  const theme = useMantineTheme();
+  //   const theme = useMantineTheme();
 
   const links = mockdata.map((item) => (
     <UnstyledButton className={classes.subLink} key={item.title}>
       <Group wrap="nowrap" align="flex-start">
         <ThemeIcon size={34} variant="default" radius="md">
-          <item.icon size={22} color={theme.colors.blue[6]} />
+          {/* <item.icon size={22} color={theme.colors.blue[6]} /> */}
         </ThemeIcon>
         <div>
           <Text size="sm" fw={500}>
