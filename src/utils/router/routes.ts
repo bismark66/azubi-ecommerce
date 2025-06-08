@@ -2,6 +2,7 @@ import Headphones from "../../pages/Headphones";
 import Home from "../../pages/Home";
 import Speakers from "../../pages/Speakers";
 import Earphones from "../../pages/Earphones";
+import ProductDetail from "../../pages/ProductDetail";
 
 const routes = [
   {
@@ -23,6 +24,11 @@ const routes = [
     name: "Earphones",
     path: "/earphones",
     component: Earphones,
+  },
+  {
+    name: "Product Detail",
+    path: "/products/:productId",
+    component: ProductDetail,
   },
 ];
 
