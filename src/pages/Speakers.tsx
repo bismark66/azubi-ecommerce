@@ -9,8 +9,10 @@ import CategoryCard from "../components/molecules/categoryCard";
 import Speaker from "../assets/home/desktop/image-speaker-zx9.png";
 import Headphones from "../assets/home/headphones.png";
 import Earphones from "../assets/shared/desktop/image-category-thumbnail-earphones.png";
+import { useNavigate } from "react-router-dom";
 
 function Speakers() {
+  const navigate = useNavigate();
   return (
     <>
       <Hero>
@@ -102,7 +104,12 @@ function Speakers() {
                 connectivity -- creating new possibilities for more pleasing and
                 practical audio setups.
               </Text>
-              <AppButton color="secondary.5">SEE PRODUCT</AppButton>
+              <AppButton
+                color="secondary.5"
+                handleClick={() => navigate("/products/6")}
+              >
+                SEE PRODUCT
+              </AppButton>
             </div>
           </Grid.Col>
         </Grid>
@@ -138,7 +145,12 @@ function Speakers() {
                 represents the top of the line powered speakers for home or
                 studio use.
               </Text>
-              <AppButton color="secondary.5">SEE PRODUCT</AppButton>
+              <AppButton
+                color="secondary.5"
+                handleClick={() => navigate("/products/5")}
+              >
+                SEE PRODUCT
+              </AppButton>
             </div>
           </Grid.Col>
           <Grid.Col
