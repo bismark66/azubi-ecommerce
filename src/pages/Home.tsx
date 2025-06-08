@@ -21,7 +21,7 @@ function Home() {
         <HomeHero />
       </Hero>
       {/* cardcategory section */}
-      <Container size={"xl"} mt={60} mb={60}>
+      <Container size={"lg"} mt={60} mb={60}>
         <Grid justify="center" align="center">
           <Grid.Col
             span={4}

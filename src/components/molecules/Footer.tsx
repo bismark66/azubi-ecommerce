@@ -18,7 +18,7 @@ export function AppFooter() {
 
   return (
     <footer className={classes.footer}>
-      <Container size="xl" className={classes.inner}>
+      <Container size="lg" className={classes.inner}>
         <div className={classes.logo}>
           <div
             style={{
@@ -111,7 +111,7 @@ export function AppFooter() {
         </div>
       </Container>
 
-      <Container size="xl" className={classes.afterFooter}>
+      <Container size="lg" className={classes.afterFooter}>
         <Text c="dimmed" size="sm">
           © {currentYear} Audiophile. All rights reserved.
         </Text>

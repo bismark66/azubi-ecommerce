@@ -29,7 +29,7 @@ function Headphones() {
         </Box>
       </Hero>
       <Container
-        size="xl"
+        size="lg"
         style={{
           display: "flex",
           flexDirection: "column",

@@ -93,7 +93,7 @@ export default function AppHeader() {
       {/* //{" "} */}
       {/* <Box pb={120}> */}
       <Container fluid className={classes.wrapper}>
-        <Container size={"xl"} className={classes.header}>
+        <Container size={"lg"} className={classes.header}>
           <Group justify="space-between" h="100%">
             {/* <MantineLogo size={30} /> */}
             <Text fw={700} size="xl">
