@@ -33,27 +33,30 @@ function Speakers() {
         <Grid
           gutter="xl"
           justify="center"
-          align="center"
+          align="stretch" // Changed from "center" to fill available height
           maw={1110}
-          mah={560}
-          style={{ overflow: "hidden" }}
+          // Remove mah={560} to allow natural height
+          style={{ overflow: "visible" }} // Changed from "hidden"
           mt={100}
         >
           <Grid.Col
-            span={6}
+            span={{ base: 12, md: 12, lg: 6 }}
             bg="tertiary.3"
             style={{
               borderRadius: 12,
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              padding: 0, // Explicitly set padding to 0 to allow gutter to work
+              padding: 0,
+              minHeight: 300, // Add minimum height for mobile
             }}
           >
             <div
               style={{
-                width: 540,
-                height: "560px",
+                width: "100%", // Changed from fixed 540
+                maxWidth: 540, // Add max-width instead
+                height: "auto", // Changed from fixed height
+                aspectRatio: "540/560", // Maintain original ratio
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
@@ -62,26 +65,25 @@ function Speakers() {
               <img
                 src={SFSpeaker}
                 alt="White Headphone"
-                width={291}
                 style={{
-                  // width: "100%",
+                  width: "100%",
                   maxWidth: 292,
-                  height: "350",
+                  height: "auto",
                   borderRadius: 12,
                 }}
               />
             </div>
           </Grid.Col>
           <Grid.Col
-            span={6}
+            span={{ base: 12, md: 12, lg: 6 }}
             style={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "flex-end",
-              paddingLeft: "var(--mantine-spacing-xl)", // Ensures gutter spacing
+              justifyContent: "center", // Changed from "flex-end" for better mobile
+              padding: "var(--mantine-spacing-xl)", // Added padding all around
             }}
           >
-            <div style={{ maxWidth: 445 }}>
+            <div style={{ maxWidth: 445, width: "100%" }}>
               <Title
                 fw={500}
                 c={"secondary.5"}
@@ -124,15 +126,16 @@ function Speakers() {
           mt={100}
         >
           <Grid.Col
-            span={6}
+            span={{ base: 12, md: 12, lg: 6 }}
+            // order={{ base: 2, md: 2, lg: 2 }}
             style={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "flex-start",
-              // paddingLeft: "var(--mantine-spacing-xl)", // Ensures gutter spacing
+              justifyContent: "center", // Changed from flex-start for better mobile
+              padding: "var(--mantine-spacing-xl)",
             }}
           >
-            <div style={{ maxWidth: 445 }}>
+            <div style={{ maxWidth: 445, width: "100%" }}>
               <Title c="primary.5" fw={500}>
                 ZX7
               </Title>
@@ -154,7 +157,9 @@ function Speakers() {
             </div>
           </Grid.Col>
           <Grid.Col
-            span={6}
+            // span={6}
+            span={{ base: 12, md: 12, lg: 6 }}
+            // order={{ base: 1, md: 1, lg: 1 }}
             bg="tertiary.3"
             style={{
               borderRadius: 12,
