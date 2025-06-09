@@ -1,54 +1,43 @@
-# React + TypeScript + Vite
+Azubi E-commerce
+A modern e-commerce web application built with React, TypeScript, Vite, and Mantine UI. This project features a product catalog, product detail pages, a shopping cart with localStorage persistence, and a checkout flow.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features
+⚡️ Vite for fast development and build
+⚛️ React 19 with functional components and hooks
+🛒 Shopping Cart with add/update/remove, persisted in localStorage
+🗂 Product Catalog and detail pages with dynamic routing
+🎨 Mantine UI for beautiful, responsive components
+🛠 TypeScript for type safety
+🧭 React Router v7 for client-side routing
+📦 Component-based architecture (atoms, molecules, organisms, templates)
+Getting Started
+Prerequisites
+Node.js (v18 or newer recommended)
+npm or yarn
+Installation
+Development
+Visit http://localhost:5173 to view the app.
 
-Currently, two official plugins are available:
+Build for Production
+Linting
+Project Structure
+Routing
+/ — Home page
+/headphones — Headphones category
+/speakers — Speakers category
+/earphones — Earphones category
+/products/:productId — Product detail page
+/checkout — Checkout page
+Cart Persistence
+The shopping cart is stored in the browser's localStorage and is loaded automatically on page refresh. Cart operations (add, update, remove) are reflected in the UI and persisted.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Customization
+Theme: Easily customizable via theme.ts using Mantine's theming system.
+Components: Modular and reusable, following atomic design principles.
+Credits
+React
+Vite
+Mantine UI
+React Router
+License
+This project is licensed under the MIT License.
