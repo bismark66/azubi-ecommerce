@@ -1,4 +1,3 @@
-import React from "react";
 import  { Box, Container, Grid, Title,Text } from "@mantine/core";
 import CTA from "../components/molecules/CTA";
 import Hero from "../components/atoms/Hero";

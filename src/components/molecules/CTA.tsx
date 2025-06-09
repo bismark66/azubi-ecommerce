@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Grid, Title, Text } from "@mantine/core";
 import GuyWithGear from "../../assets/shared/desktop/image-best-gear.jpg";
 function CTA() {

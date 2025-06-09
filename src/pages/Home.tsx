@@ -1,9 +1,7 @@
-import React from "react";
 import Hero from "../components/atoms/Hero";
 import HomeHero from "../components/molecules/HomeHero";
 import CategoryCard from "../components/molecules/categoryCard";
 import { Box, Container, Grid, Title, Text } from "@mantine/core";
-
 import Speakers from "../assets/home/desktop/image-speaker-zx9.png";
 import Headphones from "../assets/home/headphones.png";
 import Earphones from "../assets/shared/desktop/image-category-thumbnail-earphones.png";
