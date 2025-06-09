@@ -29,114 +29,131 @@ function Earphones() {
         <Container size="lg">
 
 <Grid
-          gutter="xl"
-          justify="center"
-          align="center"
-          maw={1110}
-          mah={560}
-          style={{ overflow: "hidden" }}
-          mt={100}
-        >
-          <Grid.Col
-            span={6}
-            bg="tertiary.3"
-            style={{
-              borderRadius: 12,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              padding: 0, // Explicitly set padding to 0 to allow gutter to work
-            }}
-          >
-            <div
-              style={{
-                width: 540,
-                height: "560px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <img
-                src={Earphine}
-                alt="White Headphone"
-                width={291}
-                style={{
-                  // width: "100%",
-                  maxWidth: 292,
-                  height: "350",
-                  borderRadius: 12,
-                }}
-              />
-            </div>
-          </Grid.Col>
-          <Grid.Col
-            span={6}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-end",
-              paddingLeft: "var(--mantine-spacing-xl)", // Ensures gutter spacing
-            }}
-          >
-            <div style={{ maxWidth: 445 }}>
-              <Title
-                fw={500}
-                c={"secondary.5"}
-                size={"sm"}
-                tt="capitalize"
-                style={{ letterSpacing: 10 }}
-                mb={20}
-              >
-                NEW PRODUCT
-              </Title>
-              <Title c="primary.5" fw={500}>
-               YX1 WIRELESS
-              </Title>
-              <Title c="primary.5" fw={500}>
-                EARPHONES
-              </Title>
-              <Text mt="md" c="dimmed" mb={"md"}>
-                Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.
-              </Text>
-              <AppButton color="secondary.5" handleClick={() => navigate("/products/1")}>SEE PRODUCT</AppButton>
-            </div>
-          </Grid.Col>
-        </Grid>
+  gutter="xl"
+  justify="center"
+  align="center"
+  maw={1110}
+  style={{ overflow: "hidden" }}
+  mt={{ base: 50, md: 100 }}
+>
+  {/* Image Column - now first on mobile */}
+  <Grid.Col
+    span={{ base: 12, md: 6 }}
+    order={{ base: 1, md: 1 }}
+    bg="tertiary.3"
+    style={{
+      borderRadius: 12,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: 0,
+      height: { base: 320, md: 560 }, // Responsive height
+    }}
+  >
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "var(--mantine-spacing-md)",
+      }}
+    >
+      <img
+        src={Earphine}
+        alt="White Headphone"
+        style={{
+          width: "100%",
+          maxWidth: 292,
+          height: "auto",
+          maxHeight: 350,
+          borderRadius: 12,
+          objectFit: "contain",
+        }}
+      />
+    </div>
+  </Grid.Col>
+
+  {/* Content Column - now second on mobile */}
+  <Grid.Col
+    span={{ base: 12, md: 6 }}
+    order={{ base: 2, md: 2 }}
+    style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "flex-end",
+      padding: "var(--mantine-spacing-xl)",
+    }}
+  >
+    <div style={{ maxWidth: 445, width: "100%", textAlign: "left" }}>
+      <Title
+        fw={500}
+        c={"secondary.5"}
+        size={"sm"}
+        tt="capitalize"
+        style={{ letterSpacing: 10 }}
+        mb={20}
+      >
+        NEW PRODUCT
+      </Title>
+      <Title c="primary.5" fw={500}>
+        YX1 WIRELESS
+      </Title>
+      <Title c="primary.5" fw={500}>
+        EARPHONES
+      </Title>
+      <Text mt="md" c="dimmed" mb={"md"}>
+        Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. 
+        Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.
+      </Text>
+      <Box
+        display="flex"
+        style={{
+          justifyContent: "flex-start",
+        }}
+      >
+        <AppButton color="secondary.5" handleClick={() => navigate("/products/1")}>
+          SEE PRODUCT
+        </AppButton>
+      </Box>
+    </div>
+  </Grid.Col>
+</Grid>
 <div style={{height:100
 }}></div>
-           <Grid justify="center" align="center">
-                    <Grid.Col
-                      span={4}
-                      style={{
-                        display: "flex",
-                        margin: "0 auto",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <CategoryCard image={Headphones} title="HEADPHONES" />
-                    </Grid.Col>
-                    <Grid.Col
-                      span={4}
-                      style={{
-                        display: "flex",
-                        margin: "0 auto",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <CategoryCard image={Speakers} title="SPEAKERS" />
-                    </Grid.Col>
-                    <Grid.Col
-                      span={4}
-                      style={{
-                        display: "flex",
-                        margin: "0 auto",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <CategoryCard image={Earphone} title="EARPHONES" />
-                    </Grid.Col>
-                  </Grid>
+          <Grid justify="center" align="center">
+          <Grid.Col
+            span={{ base: 12, md: 6, lg: 4 }}
+            style={{
+              display: "flex",
+              margin: "0 auto",
+              justifyContent: "center",
+            }}
+          >
+            <CategoryCard image={Headphones} title="HEADPHONES" onShopClick={() => { navigate("/products/3") }} />
+          </Grid.Col>
+          <Grid.Col
+             span={{ base: 12, md: 6, lg: 4 }}
+            style={{
+              display: "flex",
+              margin: "0 auto",
+              justifyContent: "center",
+            }}
+          >
+            <CategoryCard image={Speakers} title="SPEAKERS" onShopClick={() => { navigate("/products/6")}} />
+          </Grid.Col>
+          <Grid.Col
+             span={{ base: 12, md: 6, lg: 4 }}
+            style={{
+              display: "flex",
+              margin: "0 auto",
+              justifyContent: "center",
+            }}
+          >
+            <CategoryCard image={Earphone} title="EARPHONES" onShopClick={() => { navigate("/products/1")}} />
+          </Grid.Col>
+        </Grid>
           <div style={{ height: "100px" }}></div>
           <CTA />
         </Container>
