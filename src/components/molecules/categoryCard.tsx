@@ -1,10 +1,11 @@
 import React from "react";
 import { Center } from "@mantine/core";
+import AppButton from "../atoms/AppButton";
 
 type CategoryCardProps = {
   image?: string;
   title: string;
-  onShopClick?: React.MouseEventHandler<HTMLButtonElement>;
+  onShopClick?: () => void;
   imageBackground?: string;
 };
 
@@ -29,7 +30,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
       <Center
         style={{
           position: "absolute",
-          top: "8px", // Positions image 24px from top (284px total - 204px content - 160px image = 80px overlap)
+          top: "28px", // Positions image 24px from top (284px total - 204px content - 160px image = 80px overlap)
           left: "50%",
           transform: "translateX(-50%)",
           zIndex: 2,
@@ -39,7 +40,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
           style={{
             width: "123px",
             height: "146px",
-            backgroundColor: imageBackground,
+            // backgroundColor: imageBackground,
             borderRadius: "8px",
             display: "flex",
             justifyContent: "center",
@@ -69,7 +70,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
           flexDirection: "column",
           justifyContent: "flex-end",
           alignItems: "center",
-          //   paddingBottom: "24px",
+          paddingBottom: "24px",
           position: "relative",
         }}
       >
@@ -78,16 +79,17 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
             fontSize: "20px",
             fontWeight: 600,
             letterSpacing: "2px",
-            margin: "0 0 16px 0",
+            margin: "0 0 8px 0",
             color: "#2c2c2c",
-            fontFamily: "'Segoe UI', Roboto, sans-serif",
+            // fontFamily: "'Segoe UI', Roboto, sans-serif",
           }}
         >
           {title}
         </h3>
 
-        <button
-          onClick={onShopClick}
+        <AppButton
+          variant="subtle"
+          handleClick={onShopClick}
           style={{
             backgroundColor: "transparent",
             border: "none",
@@ -98,19 +100,19 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
             cursor: "pointer",
             display: "inline-flex",
             alignItems: "center",
-            gap: "8px",
-            padding: "8px 12px",
+            // gap: "8px",
+            padding: "2px 12px",
             borderRadius: "4px",
             transition: "all 0.2s ease",
           }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.color = "#000";
-            e.currentTarget.style.backgroundColor = "#f5f5f5";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.color = "#666";
-            e.currentTarget.style.backgroundColor = "transparent";
-          }}
+          // onMouseEnter={(e) => {
+          //   e.currentTarget.style.color = "#000";
+          //   e.currentTarget.style.backgroundColor = "#f5f5f5";
+          // }}
+          // onMouseLeave={(e) => {
+          //   e.currentTarget.style.color = "#666";
+          //   e.currentTarget.style.backgroundColor = "transparent";
+          // }}
         >
           SHOP
           <svg
@@ -123,7 +125,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
           >
             <polyline points="9,18 15,12 9,6" />
           </svg>
-        </button>
+        </AppButton>
       </div>
     </div>
   );

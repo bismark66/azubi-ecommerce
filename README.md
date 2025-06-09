@@ -1,54 +1,87 @@
-# React + TypeScript + Vite
+```markdown
+# Azubi E-commerce
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern e-commerce web application built with React, TypeScript, Vite, and Mantine UI. This project features a product catalog, product detail pages, a shopping cart with localStorage persistence, and a checkout flow.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+⚡️ Vite for fast development and build  
+⚛️ React 19 with functional components and hooks  
+🛒 Shopping Cart with add/update/remove, persisted in localStorage  
+🗂 Product Catalog and detail pages with dynamic routing  
+🎨 Mantine UI for beautiful, responsive components  
+🛠 TypeScript for type safety  
+🧭 React Router v7 for client-side routing  
+📦 Component-based architecture (atoms, molecules, organisms, templates)  
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
+- Node.js (v18 or newer recommended)
+- npm or yarn
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Installation
+```bash
+git clone https://github.com/your-repo/azubi-ecommerce.git
+cd azubi-ecommerce
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
+```bash
+npm run dev
+```
+Visit http://localhost:5173 to view the app.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Build for Production
+```bash
+npm run build
+```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### Linting
+```bash
+npm run lint
+```
+
+## Project Structure
+
+```
+src/
+├── components/
+├── pages/
+├── routes/
+├── types/
+├── utils/
+├── App.tsx
+└── main.tsx
+```
+
+## Routing
+
+- `/` — Home page
+- `/headphones` — Headphones category
+- `/speakers` — Speakers category
+- `/earphones` — Earphones category
+- `/products/:productId` — Product detail page
+- `/checkout` — Checkout page
+
+## Cart Persistence
+
+The shopping cart is stored in the browser's localStorage and is loaded automatically on page refresh. Cart operations (add, update, remove) are reflected in the UI and persisted.
+
+## Customization
+
+- **Theme**: Customize via `theme.ts` using Mantine's theming system
+- **Components**: Modular and reusable following atomic design
+
+## Credits
+
+- [React](https://react.dev)
+- [Vite](https://vitejs.dev)
+- [Mantine UI](https://mantine.dev)
+- [React Router](https://reactrouter.com)
+
+## License
+
+MIT License
 ```

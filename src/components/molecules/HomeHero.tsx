@@ -1,23 +1,15 @@
-import { IconCheck } from "@tabler/icons-react";
-import {
-  Button,
-  Container,
-  Group,
-  Image,
-  List,
-  Text,
-  ThemeIcon,
-  Title,
-} from "@mantine/core";
-// import image from "./image.svg";
+import { Container, Group, Text, Title } from "@mantine/core";
 import classes from "../../styles/HomeHero.module.css";
 import AppButton from "../atoms/AppButton";
-import HeroImage from "../../assets/home/mobile/image-header.jpg";
 
-export default function HomeHero() {
+type HomeHeroProps = {
+  handleClick?: () => void;
+};
+
+export default function HomeHero({ handleClick }: HomeHeroProps) {
   return (
     <Container fluid className={classes.hero}>
-      <Container size="xl">
+      <Container size="lg">
         <div className={classes.inner}>
           <div className={classes.content}>
             <Title
@@ -67,7 +59,11 @@ export default function HomeHero() {
             </List> */}
 
             <Group mt={30}>
-              <AppButton size="lg" color="secondary.2">
+              <AppButton
+                size="lg"
+                color="secondary.2"
+                handleClick={handleClick}
+              >
                 See product
               </AppButton>
               {/* <Button radius="xl" size="md" className={classes.control}>

@@ -3,7 +3,7 @@ import Hero from "../components/atoms/Hero";
 import HomeHero from "../components/molecules/HomeHero";
 import CategoryCard from "../components/molecules/categoryCard";
 import { Box, Container, Grid, Title, Text } from "@mantine/core";
-// import Headphones from "../assets/home/desktop/image-speaker-zx7.jpg";
+
 import Speakers from "../assets/home/desktop/image-speaker-zx9.png";
 import Headphones from "../assets/home/headphones.png";
 import Earphones from "../assets/shared/desktop/image-category-thumbnail-earphones.png";
@@ -12,46 +12,48 @@ import AppButton from "../components/atoms/AppButton";
 import ZX7Speaker from "../assets/home/desktop/image-speaker-zx7.jpg";
 import ImageEarphone from "../assets/home/desktop/image-earphones-yx1.jpg";
 import CTA from "../components/molecules/CTA";
+import { useNavigate } from "react-router-dom";
 
 
 function Home() {
+  const navigate = useNavigate();
   return (
     <>
       <Hero>
-        <HomeHero />
+        <HomeHero handleClick={() => { navigate("/products/4") }} />
       </Hero>
       {/* cardcategory section */}
-      <Container size={"xl"} mt={60} mb={60}>
+      <Container size={"lg"} mt={60} mb={60}>
         <Grid justify="center" align="center">
           <Grid.Col
-            span={4}
+            span={{ base: 12, md: 6, lg: 4 }}
             style={{
               display: "flex",
               margin: "0 auto",
               justifyContent: "center",
             }}
           >
-            <CategoryCard image={Headphones} title="HEADPHONES" />
+            <CategoryCard image={Headphones} title="HEADPHONES" onShopClick={() => { navigate("/products/3") }} />
           </Grid.Col>
           <Grid.Col
-            span={4}
+             span={{ base: 12, md: 6, lg: 4 }}
             style={{
               display: "flex",
               margin: "0 auto",
               justifyContent: "center",
             }}
           >
-            <CategoryCard image={Speakers} title="SPEAKERS" />
+            <CategoryCard image={Speakers} title="SPEAKERS" onShopClick={() => { navigate("/products/6")}} />
           </Grid.Col>
           <Grid.Col
-            span={4}
+             span={{ base: 12, md: 6, lg: 4 }}
             style={{
               display: "flex",
               margin: "0 auto",
               justifyContent: "center",
             }}
           >
-            <CategoryCard image={Earphones} title="EARPHONES" />
+            <CategoryCard image={Earphones} title="EARPHONES" onShopClick={() => { navigate("/products/1")}} />
           </Grid.Col>
         </Grid>
         <div style={{ height: 100 }}></div>
@@ -100,7 +102,8 @@ function Home() {
             align="center"
           >
             <Grid.Col
-              span={7}
+              // span={7}
+              span={{ base: 12, md: 12, lg: 7 }}
               style={{
                 display: "flex",
                 alignItems: "bottom",
@@ -116,7 +119,8 @@ function Home() {
               />
             </Grid.Col>
             <Grid.Col
-              span={5}
+              // span={5}
+               span={{ base: 12, md: 12, lg: 5 }}
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -184,7 +188,7 @@ function Home() {
       <Title style={{ fontSize: 32, fontWeight: 700, marginBottom: 16 }}>
         ZX7 SPEAKER
       </Title>
-      <AppButton variant="outline" c={"primary.0"} color="primary.0" style={{ borderRadius: 0, maxWidth: 160 }}>
+      <AppButton variant="outline" c={"primary.0"} color="primary.0" style={{ borderRadius: 0, maxWidth: 160 }} handleClick={() => { navigate("/products/5")}}>
         SEE PRODUCT
       </AppButton>
     </div>
@@ -194,52 +198,54 @@ function Home() {
 
     <div style={{ height: 100 }}></div>
      <Box>
-          <Grid gutter={"xl"}>
-            <Grid.Col 
-              span={6} 
-              style={{
-                // maxWidth: 540,
-                padding: 0,
-                borderRadius: 12
-              }}
-            >
-              <img 
-                src={ImageEarphone} 
-                alt="YX1 Earphones" 
-                style={{ 
-                  width: "100%",
-                  height: "100%",
-                  borderRadius: 12,
-                  objectFit: "cover"
-                }} 
-              />
-            </Grid.Col>
-            <Grid.Col 
-              span={6} 
-              style={{ 
-                display: "flex", 
-                alignItems: "flex-start", 
-                justifyContent: "center",
-                flexDirection: "column",
-                backgroundColor: "#979797",
-                // maxWidth: 540,
-                borderRadius: 12,
-                padding: "40px"
-              }}
-            >
-              <Title style={{ fontSize: 32, fontWeight: 700, marginBottom: 16 }}>
-                YX1 EARPHONES
-              </Title>
-              <AppButton 
-                variant="outline" 
-                c="primary.0" 
-                color="primary.0"
-                style={{ borderRadius: 0, maxWidth: 160 }}
-              >
-                SEE PRODUCT
-              </AppButton>
-            </Grid.Col>
-          </Grid>
+       <Grid gutter="xl" align="stretch"> {/* Add align="stretch" to make children equal height */}
+  <Grid.Col 
+    span={{ base: 12, md: 6, lg: 6 }}
+    // style={{
+    //   borderRadius: 12,
+    //   padding: 0, 
+    //   display: 'flex'
+    // }}
+  >
+    <img 
+      src={ImageEarphone} 
+      alt="YX1 Earphones" 
+      style={{ 
+        width: "100%",
+        height: "100%", // Let height adjust naturally
+        borderRadius: 12,
+        objectFit: "cover",
+        alignSelf: 'stretch' // Fill available height
+      }} 
+    />
+  </Grid.Col>
+  <Grid.Col 
+    span={{ base: 12, md: 6, lg: 6 }}
+    // style={{ 
+    //   backgroundColor: "#979797",
+    //   borderRadius: 12,
+    //   padding: "40px",
+    //   display: 'flex',
+    //   flexDirection: 'column',
+    //   justifyContent: 'center' // Center content vertically
+    // }}
+  >
+    <div style={{backgroundColor: "#979797", width: "100%", height: "100%",borderRadius: 12,padding: "40px",justifyContent: 'center'}}>
+    <Title style={{ fontSize: 32, fontWeight: 700, marginBottom: 16 }}>
+      YX1 EARPHONES
+    </Title>
+    <AppButton 
+      variant="outline" 
+      c="primary.0" 
+      color="primary.0"
+      // style={{ borderRadius: 0, maxWidth: 160 }}
+      handleClick={() => { navigate("/products/1") }}
+    >
+      SEE PRODUCT
+    </AppButton>
+    </div>
+  </Grid.Col>
+</Grid>
         </Box>
         
         <div style={{ height: 300 }}></div>
