@@ -120,17 +120,16 @@ function Speakers() {
           justify="center"
           align="center"
           maw={1110}
-          mah={560}
           style={{ overflow: "hidden" }}
           mt={100}
         >
           <Grid.Col
             span={{ base: 12, md: 12, lg: 6 }}
-            // order={{ base: 2, md: 2, lg: 2 }}
+            order={{ base: 2, md: 2, lg: 1 }}
             style={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "center", // Changed from flex-start for better mobile
+              justifyContent: "center",
               padding: "var(--mantine-spacing-xl)",
             }}
           >
@@ -156,36 +155,38 @@ function Speakers() {
             </div>
           </Grid.Col>
           <Grid.Col
-            // span={6}
             span={{ base: 12, md: 12, lg: 6 }}
-            // order={{ base: 1, md: 1, lg: 1 }}
+            order={{ base: 1, md: 1, lg: 2 }}
             bg="tertiary.3"
             style={{
               borderRadius: 12,
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              padding: 0, // Explicitly set padding to 0 to allow gutter to work
+              padding: 0,
+              height: "auto", // Changed from fixed height
+              minHeight: 400, // Minimum height for mobile
             }}
           >
             <div
               style={{
-                width: 540,
-                height: "560px",
+                width: "100%",
+                height: "100%",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+                padding: "var(--mantine-spacing-xl)",
               }}
             >
               <img
                 src={FFSpeaker}
                 alt="White Headphone"
-                width={291}
                 style={{
-                  // width: "100%",
+                  width: "100%",
                   maxWidth: 292,
-                  height: "350",
+                  height: "auto",
                   borderRadius: 12,
+                  objectFit: "contain",
                 }}
               />
             </div>
@@ -194,34 +195,52 @@ function Speakers() {
         <div style={{ height: 100 }}></div>
         <Grid justify="center" align="center">
           <Grid.Col
-            span={4}
+            span={{ base: 12, md: 6, lg: 4 }}
             style={{
               display: "flex",
               margin: "0 auto",
               justifyContent: "center",
             }}
           >
-            <CategoryCard image={Headphones} title="HEADPHONES" />
+            <CategoryCard
+              image={Headphones}
+              title="HEADPHONES"
+              onShopClick={() => {
+                navigate("/products/3");
+              }}
+            />
           </Grid.Col>
           <Grid.Col
-            span={4}
+            span={{ base: 12, md: 6, lg: 4 }}
             style={{
               display: "flex",
               margin: "0 auto",
               justifyContent: "center",
             }}
           >
-            <CategoryCard image={Speaker} title="SPEAKERS" />
+            <CategoryCard
+              image={SFSpeaker}
+              title="SPEAKERS"
+              onShopClick={() => {
+                navigate("/products/6");
+              }}
+            />
           </Grid.Col>
           <Grid.Col
-            span={4}
+            span={{ base: 12, md: 6, lg: 4 }}
             style={{
               display: "flex",
               margin: "0 auto",
               justifyContent: "center",
             }}
           >
-            <CategoryCard image={Earphones} title="EARPHONES" />
+            <CategoryCard
+              image={Earphones}
+              title="EARPHONES"
+              onShopClick={() => {
+                navigate("/products/1");
+              }}
+            />
           </Grid.Col>
         </Grid>
         <div style={{ height: "100px" }}></div>
