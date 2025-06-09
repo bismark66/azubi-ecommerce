@@ -242,6 +242,7 @@ function Speakers() {
             />
           </Grid.Col>
         </Grid>
+        {/* </Grid> */}
         <div style={{ height: "100px" }}></div>
         <CTA />
       </Container>
