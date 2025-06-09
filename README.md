@@ -1,5 +1,3 @@
-Here's the clean, ready-to-copy Markdown for your `README.md` file:
-
 ```markdown
 # Azubi E-commerce
 
