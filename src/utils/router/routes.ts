@@ -3,6 +3,7 @@ import Home from "../../pages/Home";
 import Speakers from "../../pages/Speakers";
 import Earphones from "../../pages/Earphones";
 import ProductDetail from "../../pages/ProductDetail";
+import Checkout from "../../pages/Checkout";
 
 const routes = [
   {
@@ -29,6 +30,11 @@ const routes = [
     name: "Product Detail",
     path: "/products/:productId",
     component: ProductDetail,
+  },
+  {
+    name: "Checkout",
+    path: "/checkout",
+    component: Checkout,
   },
 ];
 
