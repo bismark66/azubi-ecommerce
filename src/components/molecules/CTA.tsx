@@ -7,7 +7,8 @@ function CTA() {
       <Box>
         <Grid gutter={"xl"}>
           <Grid.Col
-            span={6}
+            span={{ base: 12, md: 6, lg: 6 }}
+            order={{ base: 2, sm: 2, lg: 1 }}
             style={{
               display: "flex",
               alignItems: "flex-start",
@@ -38,23 +39,34 @@ function CTA() {
             </div>
           </Grid.Col>
           <Grid.Col
-            span={6}
+            span={{ base: 12, md: 6, lg: 6 }}
+            order={{ base: 1, sm: 1, lg: 2 }}
             style={{
               // maxWidth: 540,
               padding: 0,
               borderRadius: 12,
             }}
           >
-            <img
-              src={GuyWithGear}
-              alt="YX1 Earphones"
+            <div
               style={{
                 width: "100%",
                 height: "100%",
                 borderRadius: 12,
-                objectFit: "cover",
+                overflow: "hidden",
+                padding: 20,
               }}
-            />
+            >
+              <img
+                src={GuyWithGear}
+                alt="YX1 Earphones"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  borderRadius: 12,
+                  objectFit: "cover",
+                }}
+              />
+            </div>
           </Grid.Col>
         </Grid>
       </Box>
