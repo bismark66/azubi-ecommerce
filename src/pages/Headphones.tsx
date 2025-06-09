@@ -253,34 +253,52 @@ function Headphones() {
         <div style={{ height: "100px" }}></div>
         <Grid justify="center" align="center">
           <Grid.Col
-            span={4}
+            span={{ base: 12, md: 6, lg: 4 }}
             style={{
               display: "flex",
               margin: "0 auto",
               justifyContent: "center",
             }}
           >
-            <CategoryCard image={headphones} title="HEADPHONES" />
+            <CategoryCard
+              image={headphones}
+              title="HEADPHONES"
+              onShopClick={() => {
+                navigate("/products/3");
+              }}
+            />
           </Grid.Col>
           <Grid.Col
-            span={4}
+            span={{ base: 12, md: 6, lg: 4 }}
             style={{
               display: "flex",
               margin: "0 auto",
               justifyContent: "center",
             }}
           >
-            <CategoryCard image={Speakers} title="SPEAKERS" />
+            <CategoryCard
+              image={Speakers}
+              title="SPEAKERS"
+              onShopClick={() => {
+                navigate("/products/6");
+              }}
+            />
           </Grid.Col>
           <Grid.Col
-            span={4}
+            span={{ base: 12, md: 6, lg: 4 }}
             style={{
               display: "flex",
               margin: "0 auto",
               justifyContent: "center",
             }}
           >
-            <CategoryCard image={Earphones} title="EARPHONES" />
+            <CategoryCard
+              image={Earphones}
+              title="EARPHONES"
+              onShopClick={() => {
+                navigate("/products/1");
+              }}
+            />
           </Grid.Col>
         </Grid>
         <div style={{ height: "100px" }}></div>
