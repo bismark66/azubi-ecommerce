@@ -5,7 +5,6 @@ import AppButton from "../components/atoms/AppButton";
 import SFSpeaker from "../assets/home/desktop/image-speaker-zx9.png";
 import FFSpeaker from "../assets/shared/desktop/FFSpeaker.png";
 import CategoryCard from "../components/molecules/categoryCard";
-import Speaker from "../assets/home/desktop/image-speaker-zx9.png";
 import Headphones from "../assets/home/headphones.png";
 import Earphones from "../assets/shared/desktop/image-category-thumbnail-earphones.png";
 import { useNavigate } from "react-router-dom";
