@@ -1,5 +1,6 @@
 import { IconShoppingCart } from "@tabler/icons-react";
 import {
+  Badge,
   Box,
   Burger,
   Button,
@@ -7,8 +8,8 @@ import {
   Drawer,
   Group,
   Image,
+  Menu,
   Paper,
-  Popover,
   ScrollArea,
   Stack,
   Text,
@@ -96,7 +97,6 @@ export default function AppHeader() {
   const [cartOpened, setCartOpened] = useState(false);
   const [successModalOpened, setSuccessModalOpened] = useState(false);
 
-  // Load cart items from localStorage on component mount
   useEffect(() => {
     const loadCartItems = () => {
       try {
@@ -109,15 +109,11 @@ export default function AppHeader() {
         }
       } catch (error) {
         console.error("Failed to parse cart items from localStorage", error);
-        // Clear invalid cart data
-        // localStorage.removeItem("cart");
       }
     };
-
     loadCartItems();
   }, []);
 
-  // Save cart items to localStorage whenever they change
   useEffect(() => {
     try {
       localStorage.setItem("cart", JSON.stringify(cartItems));
@@ -126,11 +122,11 @@ export default function AppHeader() {
     }
   }, [cartItems]);
 
-  // Calculate total
   const total = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
+  const cartItemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   const handleQuantityChange = (id: number, newQuantity: number) => {
     const updatedItems =
@@ -139,7 +135,6 @@ export default function AppHeader() {
         : cartItems.map((item) =>
             item.id === id ? { ...item, quantity: newQuantity } : item
           );
-
     setCartItems(updatedItems);
   };
 
@@ -148,15 +143,12 @@ export default function AppHeader() {
   };
 
   const handleCheckout = () => {
-    console.log("Proceeding to checkout...");
     setCartOpened(false);
     setSuccessModalOpened(true);
-    // setCartItems([]); // Clear cart after checkout
   };
 
   useEffect(() => {
     if (cartOpened) {
-      // Always reload cart from localStorage when cart is opened
       try {
         const storedCart = localStorage.getItem("cart");
         if (storedCart) {
@@ -167,7 +159,6 @@ export default function AppHeader() {
         }
       } catch (error) {
         console.error("Failed to parse cart items from localStorage", error);
-        // localStorage.removeItem("cart");
       }
     }
   }, [cartOpened]);
@@ -175,78 +166,72 @@ export default function AppHeader() {
   return (
     <Container fluid className={classes.wrapper}>
       <Container size={"lg"} className={classes.header}>
-        <Group justify="space-between" h="100%">
-          {/* Header content */}
-          <Text fw={700} size="xl">
-            audiophile
-          </Text>
+        <Group justify="space-between" h="100%" wrap="nowrap">
+          {/* Logo - takes 20% width */}
+          <Box className={classes.logoContainer}>
+            <Text fw={700} size="xl">
+              audiophile
+            </Text>
+          </Box>
 
-          {/* Navigation links */}
-          <Group h="100%" gap={0} visibleFrom="sm">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive ? `${classes.link} ${classes.active}` : classes.link
-              }
-            >
+          {/* Desktop navigation - takes 60% width */}
+          <Group className={classes.navContainer} visibleFrom="sm">
+            <NavLink to="/" className={classes.link}>
               Home
             </NavLink>
-            <NavLink
-              to="/headphones"
-              className={({ isActive }) =>
-                isActive ? `${classes.link} ${classes.active}` : classes.link
-              }
-            >
+            <NavLink to="/headphones" className={classes.link}>
               Headphones
             </NavLink>
-            <NavLink
-              to="/speakers"
-              className={({ isActive }) =>
-                isActive ? `${classes.link} ${classes.active}` : classes.link
-              }
-            >
+            <NavLink to="/speakers" className={classes.link}>
               Speakers
             </NavLink>
-            <NavLink
-              to="/earphones"
-              className={({ isActive }) =>
-                isActive ? `${classes.link} ${classes.active}` : classes.link
-              }
-            >
+            <NavLink to="/earphones" className={classes.link}>
               Earphones
             </NavLink>
           </Group>
 
-          {/* Cart button and popover */}
-          <Group visibleFrom="sm">
-            <Popover
+          {/* Mobile burger menu - left aligned */}
+          <Burger
+            opened={drawerOpened}
+            onClick={toggleDrawer}
+            hiddenFrom="sm"
+            color="white"
+            className={classes.burger}
+          />
+
+          {/* Cart icon with Menu dropdown */}
+          <Box className={classes.cartContainer}>
+            <Menu
               width={400}
               position="bottom-end"
               shadow="md"
-              opened={cartOpened}
-              onChange={setCartOpened}
+              withinPortal
+              offset={10}
             >
-              <Popover.Target>
-                <Button
-                  variant="transparent"
-                  onClick={() => setCartOpened((o) => !o)}
-                  p={0}
-                >
-                  <IconShoppingCart color={theme.colors.dark[0]} />
-                  {cartItems.length > 0 && (
-                    <Text size="xs" c="orange" ml={4}>
-                      {cartItems.reduce((sum, item) => sum + item.quantity, 0)}
-                    </Text>
+              <Menu.Target>
+                <Button variant="transparent" p={0} pos="relative">
+                  <IconShoppingCart color="white" />
+                  {cartItemCount > 0 && (
+                    <Badge
+                      circle
+                      size="xs"
+                      color="orange"
+                      pos="absolute"
+                      top={-5}
+                      right={-5}
+                      variant="filled"
+                    >
+                      {cartItemCount}
+                    </Badge>
                   )}
                 </Button>
-              </Popover.Target>
+              </Menu.Target>
 
-              <Popover.Dropdown>
+              <Menu.Dropdown>
                 <Paper p="md" style={{ width: "100%" }}>
                   <Group justify="space-between" mb="lg">
                     <Text size="lg" fw={700}>
-                      CART (
-                      {cartItems.reduce((sum, item) => sum + item.quantity, 0)})
+                      CART ({cartItemCount})
                     </Text>
                     {cartItems.length > 0 && (
                       <Button
@@ -314,15 +299,9 @@ export default function AppHeader() {
                     </>
                   )}
                 </Paper>
-              </Popover.Dropdown>
-            </Popover>
-          </Group>
-
-          <Burger
-            opened={drawerOpened}
-            onClick={toggleDrawer}
-            hiddenFrom="sm"
-          />
+              </Menu.Dropdown>
+            </Menu>
+          </Box>
         </Group>
       </Container>
 
@@ -337,7 +316,6 @@ export default function AppHeader() {
         zIndex={1000000}
       >
         <ScrollArea h="calc(100vh - 80px)" mx="-md">
-          {/* Mobile navigation links */}
           <NavLink
             to="/"
             className={({ isActive }) =>
@@ -374,18 +352,9 @@ export default function AppHeader() {
           >
             Earphones
           </NavLink>
-
-          <Button
-            variant="transparent"
-            fullWidth
-            leftSection={<IconShoppingCart />}
-          >
-            Cart
-          </Button>
         </ScrollArea>
       </Drawer>
 
-      {/* Checkout success modal */}
       <CheckoutSuccessModal
         opened={successModalOpened}
         onClose={() => setSuccessModalOpened(false)}
