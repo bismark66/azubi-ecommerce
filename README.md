@@ -1,3 +1,6 @@
+Here's the clean, ready-to-copy Markdown for your `README.md` file:
+
+```markdown
 # Azubi E-commerce
 
 A modern e-commerce web application built with React, TypeScript, Vite, and Mantine UI. This project features a product catalog, product detail pages, a shopping cart with localStorage persistence, and a checkout flow.
@@ -24,18 +27,27 @@ A modern e-commerce web application built with React, TypeScript, Vite, and Mant
 git clone https://github.com/your-repo/azubi-ecommerce.git
 cd azubi-ecommerce
 npm install
+```
 
-Development
+### Development
+```bash
 npm run dev
-
+```
 Visit http://localhost:5173 to view the app.
-Build for Production
+
+### Build for Production
+```bash
 npm run build
+```
 
-Linting
+### Linting
+```bash
 npm run lint
+```
 
-Project Structure
+## Project Structure
+
+```
 src/
 ├── components/
 ├── pages/
@@ -44,3 +56,34 @@ src/
 ├── utils/
 ├── App.tsx
 └── main.tsx
+```
+
+## Routing
+
+- `/` — Home page
+- `/headphones` — Headphones category
+- `/speakers` — Speakers category
+- `/earphones` — Earphones category
+- `/products/:productId` — Product detail page
+- `/checkout` — Checkout page
+
+## Cart Persistence
+
+The shopping cart is stored in the browser's localStorage and is loaded automatically on page refresh. Cart operations (add, update, remove) are reflected in the UI and persisted.
+
+## Customization
+
+- **Theme**: Customize via `theme.ts` using Mantine's theming system
+- **Components**: Modular and reusable following atomic design
+
+## Credits
+
+- [React](https://react.dev)
+- [Vite](https://vitejs.dev)
+- [Mantine UI](https://mantine.dev)
+- [React Router](https://reactrouter.com)
+
+## License
+
+MIT License
+```
