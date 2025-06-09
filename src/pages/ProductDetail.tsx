@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   Center,
@@ -18,9 +18,8 @@ import Earphones from "../assets/shared/desktop/image-category-thumbnail-earphon
 import AppButton from "../components/atoms/AppButton";
 import QuantitySelector from "../components/molecules/QuantityButton";
 import ProductCard from "../components/molecules/Card";
-import WhiteHeadphone from "../assets/shared/desktop/whiteHeadphones.png";
-import productsData from "../data.json"; // Import your JSON data
-import imgs from "../assets/product-yx1-earphones/desktop/image-category-page-preview.jpg";
+import productsData from "../data.json";
+
 function ProductDetail() {
   const { productId } = useParams(); // Get the product ID from URL
   const navigate = useNavigate();
@@ -286,7 +285,6 @@ function ProductDetail() {
                 <ProductCard
                   title={otherProduct.name}
                   image={getImagePath(otherProduct.image.desktop)}
-                  slug={otherProduct.slug}
                 />
               </Grid.Col>
             ))}

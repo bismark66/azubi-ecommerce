@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Container,
   Grid,
@@ -10,11 +10,8 @@ import {
   Button,
   Card,
   Stack,
-  Group,
   Flex,
   Box,
-  Divider,
-  Avatar,
 } from "@mantine/core";
 
 const Checkout = () => {
@@ -84,7 +81,7 @@ const Checkout = () => {
             <Box mb="xl">
               <Text
                 size="sm"
-                weight={700}
+                fw={700}
                 mb="md"
                 style={{
                   color: "#D87D4A",
@@ -130,7 +127,7 @@ const Checkout = () => {
             <Box mb="xl">
               <Text
                 size="sm"
-                weight={700}
+                fw={700}
                 mb="md"
                 style={{
                   color: "#D87D4A",
@@ -186,7 +183,7 @@ const Checkout = () => {
             <Box>
               <Text
                 size="sm"
-                weight={700}
+                fw={700}
                 mb="md"
                 style={{
                   color: "#D87D4A",
@@ -199,12 +196,12 @@ const Checkout = () => {
 
               <Grid gutter="md">
                 <Grid.Col span={6}>
-                  <Text weight={700} size="sm" mb="sm">
+                  <Text fw={700} size="sm" mb="sm">
                     Payment Method
                   </Text>
                 </Grid.Col>
                 <Grid.Col span={6}>
-                  <Stack spacing="xs">
+                  <Stack>
                     <Radio
                       value="e-money"
                       label="e-Money"
@@ -272,7 +269,7 @@ const Checkout = () => {
             </Title>
 
             {/* Order Items */}
-            <Stack spacing="md" mb="xl">
+            <Stack mb="xl">
               {orderItems.map((item) => (
                 <Flex key={item.id} justify="space-between" align="center">
                   <Flex align="center" gap="md">
@@ -291,7 +288,7 @@ const Checkout = () => {
                       {item.image}
                     </Box>
                     <Box>
-                      <Text weight={700} size="sm">
+                      <Text fw={700} size="sm">
                         {item.name}
                       </Text>
                       <Text size="sm" color="dimmed">
@@ -299,7 +296,7 @@ const Checkout = () => {
                       </Text>
                     </Box>
                   </Flex>
-                  <Text weight={700} size="sm" color="dimmed">
+                  <Text fw={700} size="sm" color="dimmed">
                     x{item.quantity}
                   </Text>
                 </Flex>
@@ -307,30 +304,30 @@ const Checkout = () => {
             </Stack>
 
             {/* Price Breakdown */}
-            <Stack spacing="xs" mb="xl">
+            <Stack mb="xl">
               <Flex justify="space-between">
                 <Text size="sm" style={{ textTransform: "uppercase" }}>
                   Total
                 </Text>
-                <Text weight={700}>${total.toLocaleString()}</Text>
+                <Text fw={700}>${total.toLocaleString()}</Text>
               </Flex>
               <Flex justify="space-between">
                 <Text size="sm" style={{ textTransform: "uppercase" }}>
                   Shipping
                 </Text>
-                <Text weight={700}>${shipping}</Text>
+                <Text fw={700}>${shipping}</Text>
               </Flex>
               <Flex justify="space-between">
                 <Text size="sm" style={{ textTransform: "uppercase" }}>
                   VAT (Included)
                 </Text>
-                <Text weight={700}>${vat.toLocaleString()}</Text>
+                <Text fw={700}>${vat.toLocaleString()}</Text>
               </Flex>
               <Flex justify="space-between" mt="md">
                 <Text size="sm" style={{ textTransform: "uppercase" }}>
                   Grand Total
                 </Text>
-                <Text weight={700} style={{ color: "#D87D4A" }}>
+                <Text fw={700} style={{ color: "#D87D4A" }}>
                   ${grandTotal.toLocaleString()}
                 </Text>
               </Flex>

@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Modal,
   Text,
@@ -29,7 +28,7 @@ interface OrderSummaryItemProps {
   isMainItem?: boolean;
 }
 
-function OrderSummaryItem({ item, isMainItem = false }: OrderSummaryItemProps) {
+function OrderSummaryItem({ item }: OrderSummaryItemProps) {
   return (
     <Group justify="space-between" align="center" wrap="nowrap">
       <Group gap="sm" wrap="nowrap">
@@ -96,9 +95,9 @@ export default function CheckoutSuccessModal({
         blur: 3,
       }}
       styles={{
-        modal: {
-          padding: 0,
-        },
+        // modal: {
+        //   padding: 0,
+        // },
         header: {
           display: "none",
         },

@@ -13,7 +13,6 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
   image,
   title,
   onShopClick,
-  imageBackground = "#f8f9fa",
 }) => {
   return (
     <div

@@ -4,7 +4,6 @@ import {
   Burger,
   Button,
   Container,
-  Divider,
   Drawer,
   Group,
   Image,
