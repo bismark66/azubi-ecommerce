@@ -25,6 +25,7 @@ function ProductDetail() {
   const { productId } = useParams(); // Get the product ID from URL
   const navigate = useNavigate();
   const [selectedQuantity, setSelectedQuantity] = useState(1);
+  const [cartUpdated, setCartUpdated] = useState(false);
 
   //   console.log(id);
   console.log(productsData.find((item) => item.id === Number(2)));
@@ -42,6 +43,34 @@ function ProductDetail() {
 
   function getImagePath(path: string) {
     return new URL(`${path}`, import.meta.url).href;
+  }
+
+  function getCart() {
+    const cart = localStorage.getItem("cart");
+    return cart ? JSON.parse(cart) : [];
+  }
+
+  function setCart(cart: any[]) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
+  function addToCart(product: any, quantity: number) {
+    const cart = getCart();
+    const existingIndex = cart.findIndex((item: any) => item.id === product.id);
+    if (existingIndex !== -1) {
+      cart[existingIndex].quantity += quantity;
+    } else {
+      cart.push({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.categoryImage.desktop,
+        quantity,
+      });
+    }
+    setCart(cart);
+    setCartUpdated(true);
+    setTimeout(() => setCartUpdated(false), 1500);
   }
 
   return (
@@ -145,7 +174,17 @@ function ProductDetail() {
                   max={10}
                   onChange={handleQuantityChange}
                 />
-                <AppButton color="secondary.5">ADD TO CART</AppButton>
+                <AppButton
+                  color="secondary.5"
+                  handleClick={() => addToCart(product, selectedQuantity)}
+                >
+                  ADD TO CART
+                </AppButton>
+                {cartUpdated && (
+                  <Text c="green" mt={10} size="sm">
+                    Added to cart!
+                  </Text>
+                )}
               </Group>
             </div>
           </Grid.Col>
