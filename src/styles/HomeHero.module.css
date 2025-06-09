@@ -1,15 +1,18 @@
 .hero {
-  background-color: var(--mantine-color-primary-7);
+  /* background-color: var(--mantine-color-primary-7); */
   background-image: url("../assets/home/desktop/image-hero.jpg");
   background-size: cover;
   background-position: 0% 80%;
   background-repeat: no-repeat;
 
-  @media (max-width: $mantine-breakpoint-sm) {
-    background-image: url("../assets/home/mobile/image-header.jpg");
-  }
+  
   @media (max-width: $mantine-breakpoint-md) {
     background-image: url("../assets/home/tablet/image-header.jpg");
+  }
+  @media (max-width: $mantine-breakpoint-sm) {
+    background-image: url("../assets/home/mobile/image-header.jpg");
+    background-position: center center;
+    background-size: cover;
   }
 }
 
