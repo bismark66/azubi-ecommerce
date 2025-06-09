@@ -51,7 +51,8 @@ function Headphones() {
           mt={100}
         >
           <Grid.Col
-            span={6}
+            // span={6}
+            span={{ base: 12, md: 12, lg: 6 }}
             bg="tertiary.3"
             style={{
               borderRadius: 12,
@@ -74,7 +75,8 @@ function Headphones() {
             />
           </Grid.Col>
           <Grid.Col
-            span={6}
+            // span={6}
+            span={{ base: 12, md: 12, lg: 6 }}
             style={{
               display: "flex",
               alignItems: "center",
@@ -124,7 +126,8 @@ function Headphones() {
           style={{ overflow: "hidden" }}
         >
           <Grid.Col
-            span={6}
+            // span={6}
+            span={{ base: 12, md: 12, lg: 6 }}
             style={{
               display: "flex",
               alignItems: "center",
@@ -154,7 +157,8 @@ function Headphones() {
             </div>
           </Grid.Col>
           <Grid.Col
-            span={6}
+            // span={6}
+            span={{ base: 12, md: 12, lg: 6 }}
             bg="tertiary.3"
             style={{
               borderRadius: 12,
