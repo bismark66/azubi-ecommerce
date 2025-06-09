@@ -45,45 +45,56 @@ function Headphones() {
           justify="center"
           align="center"
           maw={1110}
-          mah={560}
           style={{ overflow: "hidden" }}
-          mt={100}
+          mt={{ base: 50, md: 100 }}
         >
+          {/* Image Column - first on mobile */}
           <Grid.Col
-            // span={6}
-            span={{ base: 12, md: 12, lg: 6 }}
+            span={{ base: 12, lg: 6 }}
+            order={{ base: 1, lg: 1 }}
             bg="tertiary.3"
+            h={{ base: 320, lg: 560 }}
             style={{
               borderRadius: 12,
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              padding: 0, // Explicitly set padding to 0 to allow gutter to work
+              padding: 0,
             }}
           >
             <img
               src={BlackGamingHeadphone}
-              alt="White Headphone"
-              width={540}
+              alt="Black Gaming Headphone"
               style={{
-                // width: "100%",
+                width: "100%",
                 maxWidth: 540,
                 height: "auto",
+                maxHeight: "100%",
                 borderRadius: 12,
+                objectFit: "contain",
+                padding: "var(--mantine-spacing-md)",
               }}
             />
           </Grid.Col>
+
+          {/* Content Column - second on mobile */}
           <Grid.Col
-            // span={6}
-            span={{ base: 12, md: 12, lg: 6 }}
-            style={{
+            span={{ base: 12, lg: 6 }}
+            order={{ base: 2, lg: 2 }}
+            sx={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "flex-end",
-              paddingLeft: "var(--mantine-spacing-xl)", // Ensures gutter spacing
+              justifyContent: { base: "center", lg: "flex-end" },
+              padding: "var(--mantine-spacing-xl)",
             }}
           >
-            <div style={{ maxWidth: 445 }}>
+            <div
+              style={{
+                maxWidth: 445,
+                width: "100%",
+                textAlign: "center",
+              }}
+            >
               <Title
                 fw={500}
                 c={"secondary.5"}
@@ -106,12 +117,19 @@ function Headphones() {
                 reproducing the balanced depth and precision of studio-quality
                 sound.
               </Text>
-              <AppButton
-                color="secondary.5"
-                handleClick={() => navigate("/products/4")}
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: { base: "center", lg: "flex-start" },
+                }}
               >
-                SEE PRODUCT
-              </AppButton>
+                <AppButton
+                  color="secondary.5"
+                  handleClick={() => navigate("/products/4")}
+                >
+                  SEE PRODUCT
+                </AppButton>
+              </Box>
             </div>
           </Grid.Col>
         </Grid>
@@ -121,20 +139,32 @@ function Headphones() {
           justify="center"
           align="center"
           maw={1110}
-          mah={560}
           style={{ overflow: "hidden" }}
+          mt={{ base: 50, md: 100 }}
         >
+          {/* Content Column - first on mobile */}
           <Grid.Col
-            // span={6}
-            span={{ base: 12, md: 12, lg: 6 }}
-            style={{
+            span={{ base: 12, lg: 6 }}
+            order={{ base: 2, lg: 1 }}
+            sx={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "flex-start",
-              // paddingLeft: "var(--mantine-spacing-xl)", // Ensures gutter spacing
+              justifyContent: "center",
+              padding: "var(--mantine-spacing-xl)",
+              "@media (min-width: 62em)": {
+                justifyContent: "flex-start",
+              },
             }}
           >
-            <div style={{ maxWidth: 445 }}>
+            <div
+              style={{
+                maxWidth: 445,
+                width: "100%",
+                textAlign: "center",
+                // Responsive textAlign for large screens
+                ...(window.innerWidth >= 992 && { textAlign: "left" }),
+              }}
+            >
               <Title c="primary.5" fw={500}>
                 XX99 Mark I
               </Title>
@@ -147,41 +177,48 @@ function Headphones() {
                 mixing engineers, and music aficionados alike in studios and on
                 the go.
               </Text>
-              <AppButton
-                color="secondary.5"
-                handleClick={() => navigate("/products/3")}
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: { base: "center", lg: "flex-start" },
+                }}
               >
-                SEE PRODUCT
-              </AppButton>
+                <AppButton
+                  color="secondary.5"
+                  handleClick={() => navigate("/products/3")}
+                >
+                  SEE PRODUCT
+                </AppButton>
+              </Box>
             </div>
           </Grid.Col>
+
+          {/* Image Column - second on mobile */}
           <Grid.Col
-            // span={6}
-            span={{ base: 12, md: 12, lg: 6 }}
+            span={{ base: 12, lg: 6 }}
+            order={{ base: 1, lg: 2 }}
             bg="tertiary.3"
+            h={{ base: 320, lg: 560 }}
             style={{
               borderRadius: 12,
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              padding: 0, // Explicitly set padding to 0 to allow gutter to work
+              padding: 0,
             }}
           >
             <img
               src={BlackHeadphones}
-              alt="White Headphone"
-              width={540}
+              alt="Black Headphones"
               style={{
-                // width: "100%",
+                width: "100%",
                 maxWidth: 540,
                 height: "auto",
+                maxHeight: "100%",
                 borderRadius: 12,
                 objectFit: "cover",
                 objectPosition: "center",
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-                backgroundAttachment: "fixed",
+                padding: "var(--mantine-spacing-md)",
               }}
             />
           </Grid.Col>
@@ -193,42 +230,56 @@ function Headphones() {
           justify="center"
           align="center"
           maw={1110}
-          mah={560}
           style={{ overflow: "hidden" }}
+          mt={{ base: 50, md: 100 }}
         >
+          {/* Image Column - now first on mobile */}
           <Grid.Col
-            span={6}
+            span={{ base: 12, md: 6 }}
+            order={{ base: 1, md: 1 }}
             bg="tertiary.3"
+            h={{ base: 320, md: 560 }}
             style={{
               borderRadius: 12,
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              padding: 0, // Explicitly set padding to 0 to allow gutter to work
+              padding: 0,
             }}
           >
             <img
               src={WhiteHeadphone}
               alt="White Headphone"
-              width={540}
               style={{
-                // width: "100%",
+                width: "100%",
                 maxWidth: 540,
                 height: "auto",
+                maxHeight: "100%",
                 borderRadius: 12,
+                objectFit: "contain",
+                padding: "var(--mantine-spacing-md)",
               }}
             />
           </Grid.Col>
+
+          {/* Content Column - now second on mobile */}
           <Grid.Col
-            span={6}
+            span={{ base: 12, md: 6 }}
+            order={{ base: 2, md: 2 }}
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "flex-end",
-              paddingLeft: "var(--mantine-spacing-xl)", // Ensures gutter spacing
+              padding: "var(--mantine-spacing-xl)",
             }}
           >
-            <div style={{ maxWidth: 445 }}>
+            <div
+              style={{
+                maxWidth: 445,
+                width: "100%",
+                textAlign: "left",
+              }}
+            >
               <Title c="primary.5" fw={500}>
                 XX59
               </Title>
@@ -241,12 +292,22 @@ function Headphones() {
                 durable versatile wireless headset is a brilliant companion at
                 home or on the move.
               </Text>
-              <AppButton
-                color="secondary.5"
-                handleClick={() => navigate("/products/2")}
+              <Box
+                display="flex"
+                sx={(theme) => ({
+                  justifyContent: "center",
+                  [theme.fn.largerThan("md")]: {
+                    justifyContent: "flex-start",
+                  },
+                })}
               >
-                SEE PRODUCT
-              </AppButton>
+                <AppButton
+                  color="secondary.5"
+                  handleClick={() => navigate("/products/2")}
+                >
+                  SEE PRODUCT
+                </AppButton>
+              </Box>
             </div>
           </Grid.Col>
         </Grid>
