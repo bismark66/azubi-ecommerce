@@ -13,7 +13,7 @@ import {
   ScrollArea,
   Stack,
   Text,
-  useMantineTheme,
+  //   useMantineTheme,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { NavLink } from "react-router-dom";
@@ -90,7 +90,7 @@ function CartItem({ item, onQuantityChange }: CartItemProps) {
 }
 
 export default function AppHeader() {
-  const theme = useMantineTheme();
+  //   const theme = useMantineTheme();
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
