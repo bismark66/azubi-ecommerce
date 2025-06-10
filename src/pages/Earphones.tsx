@@ -47,8 +47,8 @@ function Earphones() {
       justifyContent: "center",
       alignItems: "center",
       padding: 0,
-      height: { base: 320, md: 560 }, // Responsive height
     }}
+    h={{ base: 320, md: 560 }} // Responsive height
   >
     <div
       style={{
