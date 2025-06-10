@@ -26,8 +26,6 @@ function ProductDetail() {
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [cartUpdated, setCartUpdated] = useState(false);
 
-  //   console.log(id);
-  console.log(productsData.find((item) => item.id === Number(2)));
   // Find the product with matching ID
   const product = productsData.find((item) => item.id === Number(productId));
   if (!product) {
@@ -37,7 +35,6 @@ function ProductDetail() {
 
   const handleQuantityChange = (newQuantity: React.SetStateAction<number>) => {
     setSelectedQuantity(newQuantity);
-    console.log("Quantity changed to:", newQuantity);
   };
 
   function getImagePath(path: string) {
