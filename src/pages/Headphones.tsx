@@ -1,5 +1,12 @@
 import CTA from "../components/molecules/CTA";
-import { Box, Container, Grid, Title, Text } from "@mantine/core";
+import {
+  Box,
+  Container,
+  Grid,
+  Title,
+  Text,
+  // useMantineTheme,
+} from "@mantine/core";
 import Hero from "../components/atoms/Hero";
 import CategoryCard from "../components/molecules/categoryCard";
 import Speakers from "../assets/home/desktop/image-speaker-zx9.png";
@@ -13,6 +20,8 @@ import { useNavigate } from "react-router-dom";
 
 function Headphones() {
   const navigate = useNavigate();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // const theme = useMantineTheme();
   return (
     <>
       <Hero>
@@ -81,10 +90,10 @@ function Headphones() {
           <Grid.Col
             span={{ base: 12, lg: 6 }}
             order={{ base: 2, lg: 2 }}
-            sx={{
+            style={{
               display: "flex",
               alignItems: "center",
-              justifyContent: { base: "center", lg: "flex-end" },
+              justifyContent: window.innerWidth >= 992 ? "flex-end" : "center",
               padding: "var(--mantine-spacing-xl)",
             }}
           >
@@ -118,9 +127,9 @@ function Headphones() {
                 sound.
               </Text>
               <Box
-                sx={{
+                style={{
                   display: "flex",
-                  justifyContent: { base: "center", lg: "flex-start" },
+                  justifyContent: "center",
                 }}
               >
                 <AppButton
@@ -146,14 +155,12 @@ function Headphones() {
           <Grid.Col
             span={{ base: 12, lg: 6 }}
             order={{ base: 2, lg: 1 }}
-            sx={{
+            style={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
+              justifyContent:
+                window.innerWidth >= 992 ? "flex-start" : "center",
               padding: "var(--mantine-spacing-xl)",
-              "@media (min-width: 62em)": {
-                justifyContent: "flex-start",
-              },
             }}
           >
             <div
@@ -178,9 +185,10 @@ function Headphones() {
                 the go.
               </Text>
               <Box
-                sx={{
+                style={{
                   display: "flex",
-                  justifyContent: { base: "center", lg: "flex-start" },
+                  justifyContent:
+                    window.innerWidth >= 992 ? "flex-start" : "center",
                 }}
               >
                 <AppButton
@@ -293,13 +301,11 @@ function Headphones() {
                 home or on the move.
               </Text>
               <Box
-                display="flex"
-                sx={(theme) => ({
-                  justifyContent: "center",
-                  [theme.fn.largerThan("md")]: {
-                    justifyContent: "flex-start",
-                  },
-                })}
+                style={{
+                  display: "flex",
+                  justifyContent:
+                    window.innerWidth >= 992 ? "flex-start" : "center",
+                }}
               >
                 <AppButton
                   color="secondary.5"
