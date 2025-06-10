@@ -22,7 +22,7 @@ A modern e-commerce web application built with React, TypeScript, Vite, and Mant
 
 ### Installation
 ```bash
-git clone https://github.com/your-repo/azubi-ecommerce.git
+git clone [https://github.com/bismark66/azubi-ecommerce.git]
 cd azubi-ecommerce
 npm install
 ```
