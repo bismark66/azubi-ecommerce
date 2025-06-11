@@ -70,7 +70,6 @@ export default function CheckoutSuccessModal({
   const cartItems: CartItem[] = JSON.parse(
     localStorage.getItem("cart") || "[]"
   );
-  console.log("---", cartItems);
 
   // Calculate grand total
   const grandTotal = cartItems.reduce(
@@ -79,6 +78,7 @@ export default function CheckoutSuccessModal({
   );
 
   const handleBackToHome = () => {
+    localStorage.setItem("cart", JSON.stringify([]));
     onClose();
   };
 
