@@ -19,7 +19,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import classes from "../../styles/Header.module.css";
-import CheckoutSuccessModal from "../organisms/CheckoutModal";
+// import CheckoutSuccessModal from "../organisms/CheckoutModal";
 import { useNavigate } from "react-router-dom";
 
 type CartItem = {
@@ -95,8 +95,8 @@ export default function AppHeader() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [cartOpened, setCartOpened] = useState(false);
-  const [successModalOpened, setSuccessModalOpened] = useState(false);
+  //   const [cartOpened, setCartOpened] = useState(false);
+  //   const [successModalOpened, setSuccessModalOpened] = useState(false);
 
   const navigate = useNavigate();
 
@@ -147,21 +147,21 @@ export default function AppHeader() {
   useEffect(() => {
     loadCartItems();
   }, []);
-  useEffect(() => {
-    if (cartOpened) {
-      try {
-        const storedCart = localStorage.getItem("cart");
-        if (storedCart) {
-          const parsedCart = JSON.parse(storedCart);
-          if (Array.isArray(parsedCart)) {
-            setCartItems(parsedCart);
-          }
-        }
-      } catch (error) {
-        console.error("Failed to parse cart items from localStorage", error);
-      }
-    }
-  }, [cartOpened]);
+  //   useEffect(() => {
+  //     if (cartOpened) {
+  //       try {
+  //         const storedCart = localStorage.getItem("cart");
+  //         if (storedCart) {
+  //           const parsedCart = JSON.parse(storedCart);
+  //           if (Array.isArray(parsedCart)) {
+  //             setCartItems(parsedCart);
+  //           }
+  //         }
+  //       } catch (error) {
+  //         console.error("Failed to parse cart items from localStorage", error);
+  //       }
+  //     }
+  //   }, [cartOpened]);
 
   return (
     <Container fluid className={classes.wrapper}>
@@ -357,10 +357,10 @@ export default function AppHeader() {
         </ScrollArea>
       </Drawer>
 
-      <CheckoutSuccessModal
+      {/* <CheckoutSuccessModal
         opened={successModalOpened}
         onClose={() => setSuccessModalOpened(false)}
-      />
+      /> */}
     </Container>
   );
 }
