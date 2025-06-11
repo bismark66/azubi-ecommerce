@@ -35,7 +35,6 @@ function ProductDetail() {
   if (!product) {
     return <div>Product not found</div>;
   }
-  console.log(product.categoryImage.desktop);
 
   const handleQuantityChange = (newQuantity: React.SetStateAction<number>) => {
     setSelectedQuantity(newQuantity);

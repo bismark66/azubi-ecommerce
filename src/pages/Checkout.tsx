@@ -35,7 +35,6 @@ const Checkout = () => {
     if (storedCart) {
       try {
         const parsedCart = JSON.parse(storedCart);
-        console.log("items in cart", parsedCart);
         setCartItems(parsedCart);
       } catch (error) {
         console.error("Error parsing cart from localStorage:", error);
