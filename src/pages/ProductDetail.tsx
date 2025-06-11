@@ -9,6 +9,7 @@ import {
   ListItem,
   Text,
   Title,
+  useMantineTheme,
 } from "@mantine/core";
 import CategoryCard from "../components/molecules/categoryCard";
 import CTA from "../components/molecules/CTA";
@@ -19,12 +20,15 @@ import AppButton from "../components/atoms/AppButton";
 import QuantitySelector from "../components/molecules/QuantityButton";
 import ProductCard from "../components/molecules/Card";
 import productsData from "../data.json";
+import { useMediaQuery } from "@mantine/hooks";
 
 function ProductDetail() {
   const { productId } = useParams(); // Get the product ID from URL
   const navigate = useNavigate();
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [cartUpdated, setCartUpdated] = useState(false);
+  const theme = useMantineTheme();
+  const isMobile = useMediaQuery(`(max-width: 400px)`);
 
   // Find the product with matching ID
   const product = productsData.find((item) => item.id === Number(productId));
@@ -88,57 +92,51 @@ function ProductDetail() {
           </Grid.Col>
         </Grid>
         <div style={{ height: 0 }}></div>
-        <Grid
-          gutter="xl"
-          justify="center"
-          align="center"
-          maw={1110}
-          mah={560}
-          style={{ overflow: "hidden" }}
-          mt={100}
-        >
+        <Grid gutter="xl" justify="center" align="stretch" maw={1110} mt={100}>
           <Grid.Col
-            span={6}
+            span={{ base: 12, md: 12, lg: 6 }}
             bg="tertiary.3"
             style={{
               borderRadius: 12,
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              padding: 0,
+              padding: "var(--mantine-spacing-md)",
+              minHeight: "400px",
             }}
           >
             <div
               style={{
-                width: 540,
-                height: "560px",
+                width: "100%",
+                maxWidth: 540,
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
               }}
             >
               <img
-                src={getImagePath(product.categoryImage.desktop)} // Use the product image from data
+                src={getImagePath(product.categoryImage.desktop)}
                 alt={product.name}
-                width={291}
                 style={{
-                  maxWidth: 292,
-                  height: "350",
+                  width: "100%",
+                  maxWidth: 291,
+                  height: "auto",
                   borderRadius: 12,
+                  objectFit: "contain",
                 }}
               />
             </div>
           </Grid.Col>
           <Grid.Col
-            span={6}
+            span={{ base: 12, md: 12, lg: 6 }}
             style={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "flex-end",
-              paddingLeft: "var(--mantine-spacing-xl)",
+              justifyContent: { base: "center", lg: "flex-end" },
+              padding: "var(--mantine-spacing-md)",
             }}
           >
-            <div style={{ maxWidth: 445 }}>
+            <div style={{ maxWidth: 445, width: "100%" }}>
               {product.new && (
                 <Title
                   fw={500}
@@ -151,19 +149,24 @@ function ProductDetail() {
                   NEW PRODUCT
                 </Title>
               )}
-              <Title c="primary.5" fw={500}>
+              <Title c="primary.5" fw={500} size={{ base: "lg", md: "xl" }}>
                 {product.name.split(" ")[0]}
               </Title>
-              <Title c="primary.5" fw={500}>
+              <Title c="primary.5" fw={500} size={{ base: "lg", md: "xl" }}>
                 {product.name.split(" ").slice(1).join(" ")}
               </Title>
-              <Text mt="md" c="dimmed" mb={"md"}>
+              <Text
+                mt="md"
+                c="dimmed"
+                mb={"md"}
+                size={{ base: "sm", md: "md" }}
+              >
                 {product.description}
               </Text>
               <Text fw={700} size="xl" mb="md">
                 ${product.price.toLocaleString()}
               </Text>
-              <Group>
+              <Group gap="md" wrap="wrap">
                 <QuantitySelector
                   initialValue={1}
                   min={1}
@@ -173,21 +176,22 @@ function ProductDetail() {
                 <AppButton
                   color="secondary.5"
                   handleClick={() => addToCart(product, selectedQuantity)}
+                  style={{ flexGrow: 1, minWidth: "150px" }}
                 >
                   ADD TO CART
                 </AppButton>
-                {cartUpdated && (
-                  <Text c="green" mt={10} size="sm">
-                    Added to cart!
-                  </Text>
-                )}
               </Group>
+              {cartUpdated && (
+                <Text c="green" mt={10} size="sm">
+                  Added to cart!
+                </Text>
+              )}
             </div>
           </Grid.Col>
         </Grid>
         <div style={{ height: 100 }}></div>
         <Grid>
-          <Grid.Col span={6}>
+          <Grid.Col span={{ base: 12, md: 6, lg: 6 }}>
             <Title fw={400}>FEATURES</Title>
             {product.features.split("\n").map((paragraph, index) => (
               <Text key={index} c={"dimmed"} mt={index > 0 ? 10 : 0}>
@@ -196,8 +200,12 @@ function ProductDetail() {
             ))}
           </Grid.Col>
           <Grid.Col
-            span={6}
-            style={{ display: "flex", justifyContent: "center" }}
+            span={{ base: 12, md: 6, lg: 6 }}
+            style={{
+              display: "flex",
+              justifyContent: isMobile ? "flex-start" : "center",
+              //   justifyItems: "flex-start",
+            }}
           >
             <div style={{ maxWidth: 350, maxHeight: 192 }}>
               <Title fw={400}>IN THE BOX</Title>
@@ -219,52 +227,69 @@ function ProductDetail() {
 
         <div style={{ height: 100 }}></div>
 
-        <Grid
-          justify="space-between"
-          align="center"
-          maw={1110}
-          mah={592}
-          gutter={"xl"}
-        >
-          <Grid.Col span={6} style={{ padding: "0 !important" }}>
+        <Grid justify="space-between" align="flex-start" maw={1110} gutter="xl">
+          <Grid.Col
+            span={{ base: 12, md: 12, lg: 6 }}
+            style={{ padding: "0 !important" }}
+          >
             <Grid
-              mah={"100%"}
               justify="space-between"
-              align="space-between"
-              style={{ padding: "0 !important", marginRight: "0 !important" }}
+              align="stretch"
+              style={{
+                padding: "0 !important",
+                marginRight: "0 !important",
+                height: "100%",
+              }}
             >
-              <Grid.Col span={12} h={280} style={{ padding: "0 !important" }}>
+              <Grid.Col
+                span={12}
+                style={{
+                  padding: "0 !important",
+                  marginBottom: "var(--mantine-spacing-xl)",
+                }}
+              >
                 <img
                   src={getImagePath(product.gallery.first.desktop)}
                   alt={`${product.name} gallery 1`}
-                  width={"100%"}
-                  height={"100%"}
+                  width="100%"
                   style={{
                     borderRadius: 12,
+                    display: "block",
+                    aspectRatio: "16/9",
+                    objectFit: "cover",
                   }}
                 />
               </Grid.Col>
-              <Grid.Col span={12} h={280} style={{ padding: "0 !important" }}>
+              <Grid.Col span={12} style={{ padding: "0 !important" }}>
                 <img
                   src={getImagePath(product.gallery.second.desktop)}
                   alt={`${product.name} gallery 2`}
-                  width={"100%"}
-                  height={"100%"}
+                  width="100%"
                   style={{
                     borderRadius: 12,
+                    display: "block",
+                    aspectRatio: "16/9",
+                    objectFit: "cover",
                   }}
                 />
               </Grid.Col>
             </Grid>
           </Grid.Col>
-          <Grid.Col span={6} w={635}>
+          <Grid.Col
+            span={{ base: 12, md: 12, lg: 6 }}
+            style={{ padding: "0 !important" }}
+          >
             <img
               src={getImagePath(product.gallery.third.desktop)}
               alt={`${product.name} gallery 3`}
-              width={"100%"}
-              height={592}
+              width="100%"
               style={{
                 borderRadius: 12,
+                display: "block",
+                aspectRatio: "4/5",
+                objectFit: "cover",
+                height: "100%",
+                minHeight: "300px",
               }}
             />
           </Grid.Col>
@@ -278,7 +303,7 @@ function ProductDetail() {
           </Grid.Col>
           <Grid gutter="xl" justify="space-between">
             {product.others.map((otherProduct, index) => (
-              <Grid.Col key={index} span={4}>
+              <Grid.Col key={index} span={{ base: 12, md: 6, lg: 4 }}>
                 <ProductCard
                   title={otherProduct.name}
                   image={getImagePath(otherProduct.image.desktop)}
@@ -292,34 +317,52 @@ function ProductDetail() {
 
         <Grid justify="center" align="center">
           <Grid.Col
-            span={4}
+            span={{ base: 12, md: 6, lg: 4 }}
             style={{
               display: "flex",
               margin: "0 auto",
               justifyContent: "center",
             }}
           >
-            <CategoryCard image={Headphones} title="HEADPHONES" />
+            <CategoryCard
+              image={Headphones}
+              title="HEADPHONES"
+              onShopClick={() => {
+                navigate("/products/3");
+              }}
+            />
           </Grid.Col>
           <Grid.Col
-            span={4}
+            span={{ base: 12, md: 6, lg: 4 }}
             style={{
               display: "flex",
               margin: "0 auto",
               justifyContent: "center",
             }}
           >
-            <CategoryCard image={Speaker} title="SPEAKERS" />
+            <CategoryCard
+              image={Speaker}
+              title="SPEAKERS"
+              onShopClick={() => {
+                navigate("/products/6");
+              }}
+            />
           </Grid.Col>
           <Grid.Col
-            span={4}
+            span={{ base: 12, md: 6, lg: 4 }}
             style={{
               display: "flex",
               margin: "0 auto",
               justifyContent: "center",
             }}
           >
-            <CategoryCard image={Earphones} title="EARPHONES" />
+            <CategoryCard
+              image={Earphones}
+              title="EARPHONES"
+              onShopClick={() => {
+                navigate("/products/1");
+              }}
+            />
           </Grid.Col>
         </Grid>
         <div style={{ height: "100px" }}></div>
