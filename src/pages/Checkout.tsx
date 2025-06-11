@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Container,
   Grid,
@@ -13,46 +13,60 @@ import {
   Flex,
   Box,
 } from "@mantine/core";
+import CheckoutSuccessModal from "../components/organisms/CheckoutModal";
+
+interface CartItem {
+  id: number;
+  name: string;
+  price: number;
+  quantity: number;
+  image?: string;
+}
 
 const Checkout = () => {
   const [paymentMethod, setPaymentMethod] = useState("e-money");
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [successModalOpened, setSuccessModalOpened] = useState(false);
+  const [cartOpened, setCartOpened] = useState(false);
 
-  const orderItems = [
-    {
-      id: 1,
-      name: "XX99 MK II",
-      price: 2999,
-      quantity: 1,
-      image: "🎧",
-    },
-    {
-      id: 2,
-      name: "XX59",
-      price: 899,
-      quantity: 2,
-      image: "🎧",
-    },
-    {
-      id: 3,
-      name: "YX1",
-      price: 599,
-      quantity: 1,
-      image: "🎧",
-    },
-  ];
+  // Load cart items from localStorage on component mount
+  useEffect(() => {
+    const storedCart = localStorage.getItem("cart");
+    if (storedCart) {
+      try {
+        const parsedCart = JSON.parse(storedCart);
+        console.log("items in cart", parsedCart);
+        setCartItems(parsedCart);
+      } catch (error) {
+        console.error("Error parsing cart from localStorage:", error);
+        setCartItems([]);
+      }
+    }
+  }, []);
 
-  const total = orderItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+  // Calculate totals based on cart items
+  const total = cartItems.reduce(
+    (sum, item) => sum + item.price * (item.quantity || 1),
     0
   );
   const shipping = 50;
   const vat = Math.round(total * 0.2);
   const grandTotal = total + shipping + vat;
 
+  function getImagePath(path: string) {
+    return new URL(`${path}`, import.meta.url).href;
+  }
+
+  const handleCheckout = () => {
+    setCartOpened(false);
+    setSuccessModalOpened(true);
+  };
+
   return (
     <Container
       size="xl"
       py="xl"
+      px="md"
       style={{ backgroundColor: "#F2F2F2", minHeight: "100vh" }}
     >
       <Button
@@ -66,8 +80,12 @@ const Checkout = () => {
 
       <Grid gutter="xl">
         {/* Left Column - Checkout Form */}
-        <Grid.Col span={8}>
-          <Card padding="xl" radius="md" style={{ backgroundColor: "white" }}>
+        <Grid.Col span={{ base: 12, md: 8 }}>
+          <Card
+            padding="xl"
+            radius="md"
+            style={{ backgroundColor: "white", minHeight: "400px" }}
+          >
             <Title
               order={1}
               size="2rem"
@@ -93,7 +111,7 @@ const Checkout = () => {
               </Text>
 
               <Grid gutter="md">
-                <Grid.Col span={6}>
+                <Grid.Col span={{ base: 12, sm: 6 }}>
                   <TextInput
                     label="Name"
                     placeholder="Alexei Ward"
@@ -102,7 +120,7 @@ const Checkout = () => {
                     }}
                   />
                 </Grid.Col>
-                <Grid.Col span={6}>
+                <Grid.Col span={{ base: 12, sm: 6 }}>
                   <TextInput
                     label="Email Address"
                     placeholder="alexei@mail.com"
@@ -111,7 +129,7 @@ const Checkout = () => {
                     }}
                   />
                 </Grid.Col>
-                <Grid.Col span={6}>
+                <Grid.Col span={{ base: 12, sm: 6 }}>
                   <TextInput
                     label="Phone Number"
                     placeholder="+1 202-555-0136"
@@ -148,7 +166,7 @@ const Checkout = () => {
                     }}
                   />
                 </Grid.Col>
-                <Grid.Col span={6}>
+                <Grid.Col span={{ base: 12, sm: 6 }}>
                   <TextInput
                     label="ZIP Code"
                     placeholder="10001"
@@ -157,7 +175,7 @@ const Checkout = () => {
                     }}
                   />
                 </Grid.Col>
-                <Grid.Col span={6}>
+                <Grid.Col span={{ base: 12, sm: 6 }}>
                   <TextInput
                     label="City"
                     placeholder="New York"
@@ -166,7 +184,7 @@ const Checkout = () => {
                     }}
                   />
                 </Grid.Col>
-                <Grid.Col span={6}>
+                <Grid.Col span={{ base: 12, sm: 6 }}>
                   <Select
                     label="Country"
                     placeholder="United States"
@@ -195,12 +213,12 @@ const Checkout = () => {
               </Text>
 
               <Grid gutter="md">
-                <Grid.Col span={6}>
+                <Grid.Col span={{ base: 12, sm: 6 }}>
                   <Text fw={700} size="sm" mb="sm">
                     Payment Method
                   </Text>
                 </Grid.Col>
-                <Grid.Col span={6}>
+                <Grid.Col span={{ base: 12, sm: 6 }}>
                   <Stack>
                     <Radio
                       value="e-money"
@@ -210,8 +228,25 @@ const Checkout = () => {
                         setPaymentMethod(event.currentTarget.value)
                       }
                       styles={{
-                        radio: { borderColor: "#D87D4A" },
-                        label: { fontWeight: 700 },
+                        root: {
+                          border: "1px solid #CFCFCF",
+                          borderRadius: "8px",
+                          padding: "18px 16px",
+                          "&:hover": {
+                            borderColor: "#D87D4A",
+                          },
+                        },
+                        radio: {
+                          borderColor: "#CFCFCF",
+                          "&:checked": {
+                            backgroundColor: "#D87D4A",
+                            borderColor: "#D87D4A",
+                          },
+                        },
+                        label: {
+                          fontWeight: 700,
+                          paddingLeft: "16px",
+                        },
                       }}
                     />
                     <Radio
@@ -222,8 +257,25 @@ const Checkout = () => {
                         setPaymentMethod(event.currentTarget.value)
                       }
                       styles={{
-                        radio: { borderColor: "#D87D4A" },
-                        label: { fontWeight: 700 },
+                        root: {
+                          border: "1px solid #CFCFCF",
+                          borderRadius: "8px",
+                          padding: "18px 16px",
+                          "&:hover": {
+                            borderColor: "#D87D4A",
+                          },
+                        },
+                        radio: {
+                          borderColor: "#CFCFCF",
+                          "&:checked": {
+                            backgroundColor: "#D87D4A",
+                            borderColor: "#D87D4A",
+                          },
+                        },
+                        label: {
+                          fontWeight: 700,
+                          paddingLeft: "16px",
+                        },
                       }}
                     />
                   </Stack>
@@ -231,7 +283,7 @@ const Checkout = () => {
 
                 {paymentMethod === "e-money" && (
                   <>
-                    <Grid.Col span={6}>
+                    <Grid.Col span={{ base: 12, sm: 6 }}>
                       <TextInput
                         label="e-Money Number"
                         placeholder="238521993"
@@ -240,7 +292,7 @@ const Checkout = () => {
                         }}
                       />
                     </Grid.Col>
-                    <Grid.Col span={6}>
+                    <Grid.Col span={{ base: 12, sm: 6 }}>
                       <TextInput
                         label="e-Money PIN"
                         placeholder="6891"
@@ -257,7 +309,7 @@ const Checkout = () => {
         </Grid.Col>
 
         {/* Right Column - Order Summary */}
-        <Grid.Col span={4}>
+        <Grid.Col span={{ base: 12, md: 4 }}>
           <Card padding="xl" radius="md" style={{ backgroundColor: "white" }}>
             <Title
               order={2}
@@ -269,39 +321,37 @@ const Checkout = () => {
             </Title>
 
             {/* Order Items */}
-            <Stack mb="xl">
-              {orderItems.map((item) => (
-                <Flex key={item.id} justify="space-between" align="center">
-                  <Flex align="center" gap="md">
-                    <Box
-                      style={{
-                        width: 64,
-                        height: 64,
-                        backgroundColor: "#F1F1F1",
-                        borderRadius: 8,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontSize: "24px",
-                      }}
-                    >
-                      {item.image}
-                    </Box>
-                    <Box>
-                      <Text fw={700} size="sm">
-                        {item.name}
-                      </Text>
-                      <Text size="sm" color="dimmed">
-                        ${item.price.toLocaleString()}
-                      </Text>
-                    </Box>
+            {cartItems.length > 0 ? (
+              <Stack mb="xl" gap="sm">
+                {cartItems.map((item) => (
+                  <Flex key={item.id} justify="space-between" align="center">
+                    <Flex align="center" gap="md">
+                      <img
+                        src={getImagePath(item.image ?? "")}
+                        alt={item.name}
+                        width={64}
+                        height={64}
+                      />
+                      <Box>
+                        <Text fw={300} size="sm">
+                          {item.name}
+                        </Text>
+                        <Text size="sm" color="dimmed">
+                          ${item.price.toLocaleString()}
+                        </Text>
+                      </Box>
+                    </Flex>
+                    <Text fw={700} size="sm" color="dimmed">
+                      x{item.quantity || 1}
+                    </Text>
                   </Flex>
-                  <Text fw={700} size="sm" color="dimmed">
-                    x{item.quantity}
-                  </Text>
-                </Flex>
-              ))}
-            </Stack>
+                ))}
+              </Stack>
+            ) : (
+              <Text size="sm" color="dimmed" mb="xl" ta="center">
+                Your cart is empty
+              </Text>
+            )}
 
             {/* Price Breakdown */}
             <Stack mb="xl">
@@ -312,15 +362,33 @@ const Checkout = () => {
                 <Text fw={700}>${total.toLocaleString()}</Text>
               </Flex>
               <Flex justify="space-between">
-                <Text size="sm" style={{ textTransform: "uppercase" }}>
-                  Shipping
-                </Text>
+                <Box>
+                  <Text size="sm" style={{ textTransform: "uppercase" }}>
+                    Shipping
+                  </Text>
+                  <Text
+                    size="xs"
+                    color="dimmed"
+                    style={{ fontStyle: "italic" }}
+                  >
+                    Fixed shipping cost
+                  </Text>
+                </Box>
                 <Text fw={700}>${shipping}</Text>
               </Flex>
               <Flex justify="space-between">
-                <Text size="sm" style={{ textTransform: "uppercase" }}>
-                  VAT (Included)
-                </Text>
+                <Box>
+                  <Text size="sm" style={{ textTransform: "uppercase" }}>
+                    VAT (Included)
+                  </Text>
+                  <Text
+                    size="xs"
+                    color="dimmed"
+                    style={{ fontStyle: "italic" }}
+                  >
+                    20% of product total
+                  </Text>
+                </Box>
                 <Text fw={700}>${vat.toLocaleString()}</Text>
               </Flex>
               <Flex justify="space-between" mt="md">
@@ -337,26 +405,34 @@ const Checkout = () => {
             <Button
               fullWidth
               size="md"
+              disabled={cartItems.length === 0}
               style={{
-                backgroundColor: "#D87D4A",
+                backgroundColor: cartItems.length === 0 ? "#ccc" : "#D87D4A",
                 textTransform: "uppercase",
                 letterSpacing: "1px",
                 fontWeight: 700,
-                padding: "16px",
+                padding: "13px",
               }}
               styles={{
                 root: {
                   "&:hover": {
-                    backgroundColor: "#C5663A",
+                    backgroundColor:
+                      cartItems.length === 0 ? "#ccc" : "#C5663A",
                   },
                 },
               }}
+              onClick={handleCheckout}
             >
               Continue & Pay
             </Button>
           </Card>
         </Grid.Col>
       </Grid>
+
+      <CheckoutSuccessModal
+        opened={successModalOpened}
+        onClose={() => setSuccessModalOpened(false)}
+      />
     </Container>
   );
 };
