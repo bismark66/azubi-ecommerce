@@ -23,8 +23,9 @@ export default function HomeHero({ handleClick }: HomeHeroProps) {
               NEW PRODUCT
             </Title>
             <Title className={classes.title}>
-              XX99 <span className={classes.highlight}>MARK</span> || <br />{" "}
-              HEADPHONES
+              XX99 MARK II
+              {/* <span className={classes.highlight}> */}
+              <br /> HEADPHONES
             </Title>
             <Text c="dimmed" mt="md" style={{ maxWidth: 349 }}>
               {/* Build fully functional accessible web applications faster than
