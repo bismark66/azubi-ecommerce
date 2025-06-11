@@ -27,7 +27,7 @@ const Checkout = () => {
   const [paymentMethod, setPaymentMethod] = useState("e-money");
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [successModalOpened, setSuccessModalOpened] = useState(false);
-  const [cartOpened, setCartOpened] = useState(false);
+  //   const [cartOpened, setCartOpened] = useState(false);
 
   // Load cart items from localStorage on component mount
   useEffect(() => {
@@ -58,7 +58,7 @@ const Checkout = () => {
   }
 
   const handleCheckout = () => {
-    setCartOpened(false);
+    // setCartOpened(false);
     setSuccessModalOpened(true);
   };
 

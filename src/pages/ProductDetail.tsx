@@ -9,7 +9,7 @@ import {
   ListItem,
   Text,
   Title,
-  useMantineTheme,
+  //   useMantineTheme,
 } from "@mantine/core";
 import CategoryCard from "../components/molecules/categoryCard";
 import CTA from "../components/molecules/CTA";
@@ -27,7 +27,7 @@ function ProductDetail() {
   const navigate = useNavigate();
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [cartUpdated, setCartUpdated] = useState(false);
-  const theme = useMantineTheme();
+  //   const theme = useMantineTheme();
   const isMobile = useMediaQuery(`(max-width: 400px)`);
 
   // Find the product with matching ID
@@ -132,7 +132,8 @@ function ProductDetail() {
             style={{
               display: "flex",
               alignItems: "center",
-              justifyContent: { base: "center", lg: "flex-end" },
+              //   justifyContent: { base: "center", lg: "flex-end" },
+              justifyContent: isMobile ? "center" : "flex-end",
               padding: "var(--mantine-spacing-md)",
             }}
           >
@@ -149,18 +150,18 @@ function ProductDetail() {
                   NEW PRODUCT
                 </Title>
               )}
-              <Title c="primary.5" fw={500} size={{ base: "lg", md: "xl" }}>
+              <Title
+                c="primary.5"
+                fw={500}
+                //   size={{ base: "lg", md: "xl" }}
+                size={isMobile ? "lg" : "xl"}
+              >
                 {product.name.split(" ")[0]}
               </Title>
-              <Title c="primary.5" fw={500} size={{ base: "lg", md: "xl" }}>
+              <Title c="primary.5" fw={500} size={isMobile ? "lg" : "xl"}>
                 {product.name.split(" ").slice(1).join(" ")}
               </Title>
-              <Text
-                mt="md"
-                c="dimmed"
-                mb={"md"}
-                size={{ base: "sm", md: "md" }}
-              >
+              <Text mt="md" c="dimmed" mb={"md"} size={isMobile ? "lg" : "xl"}>
                 {product.description}
               </Text>
               <Text fw={700} size="xl" mb="md">
