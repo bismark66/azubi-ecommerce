@@ -131,7 +131,6 @@ function ProductDetail() {
             style={{
               display: "flex",
               alignItems: "center",
-              //   justifyContent: { base: "center", lg: "flex-end" },
               justifyContent: isMobile ? "center" : "flex-end",
               padding: "var(--mantine-spacing-md)",
             }}
@@ -149,12 +148,7 @@ function ProductDetail() {
                   NEW PRODUCT
                 </Title>
               )}
-              <Title
-                c="primary.5"
-                fw={500}
-                //   size={{ base: "lg", md: "xl" }}
-                size={isMobile ? "lg" : "xl"}
-              >
+              <Title c="primary.5" fw={500} size={isMobile ? "lg" : "xl"}>
                 {product.name.split(" ")[0]}
               </Title>
               <Title c="primary.5" fw={500} size={isMobile ? "lg" : "xl"}>
@@ -204,7 +198,6 @@ function ProductDetail() {
             style={{
               display: "flex",
               justifyContent: isMobile ? "flex-start" : "center",
-              //   justifyItems: "flex-start",
             }}
           >
             <div style={{ maxWidth: 350, maxHeight: 192 }}>

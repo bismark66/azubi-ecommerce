@@ -57,13 +57,10 @@ function Home() {
         <div style={{ height: 100 }}></div>
         <Box
           bg="secondary.5"
-          // my="xl"
-          // mt={120}
           style={{
             borderRadius: 12,
             position: "relative",
-            // height: 500,
-            paddingTop: 80,
+             paddingTop: 80,
             overflow: "hidden",
           }}
         >
@@ -75,8 +72,6 @@ function Home() {
               width: "100%",
               height: "100%",
               transform: "translate(-20%, 30%)",
-              // opacity: 0.2,
-              // zIndex: 0,
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
@@ -86,9 +81,7 @@ function Home() {
               src={CirclePattern}
               alt="Circle pattern"
               style={{
-                // width: "50%",
-                // height: "100%",
-                objectFit: "cover", // or "contain" depending on your needs
+                objectFit: "cover", 
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "left bottom",
               }}
@@ -100,7 +93,6 @@ function Home() {
             align="center"
           >
             <Grid.Col
-              // span={7}
               span={{ base: 12, md: 12, lg: 7 }}
               style={{
                 display: "flex",
@@ -117,7 +109,6 @@ function Home() {
               />
             </Grid.Col>
             <Grid.Col
-              // span={5}
                span={{ base: 12, md: 12, lg: 5 }}
               style={{
                 display: "flex",
@@ -196,37 +187,24 @@ function Home() {
 
     <div style={{ height: 100 }}></div>
      <Box>
-       <Grid gutter="xl" align="stretch"> {/* Add align="stretch" to make children equal height */}
+       <Grid gutter="xl" align="stretch"> 
   <Grid.Col 
     span={{ base: 12, md: 6, lg: 6 }}
-    // style={{
-    //   borderRadius: 12,
-    //   padding: 0, 
-    //   display: 'flex'
-    // }}
   >
     <img 
       src={ImageEarphone} 
       alt="YX1 Earphones" 
       style={{ 
         width: "100%",
-        height: "100%", // Let height adjust naturally
+        height: "100%", 
         borderRadius: 12,
         objectFit: "cover",
-        alignSelf: 'stretch' // Fill available height
+        alignSelf: 'stretch'
       }} 
     />
   </Grid.Col>
   <Grid.Col 
     span={{ base: 12, md: 6, lg: 6 }}
-    // style={{ 
-    //   backgroundColor: "#979797",
-    //   borderRadius: 12,
-    //   padding: "40px",
-    //   display: 'flex',
-    //   flexDirection: 'column',
-    //   justifyContent: 'center' // Center content vertically
-    // }}
   >
     <div style={{backgroundColor: "#979797", width: "100%", height: "100%",borderRadius: 12,padding: "40px",justifyContent: 'center'}}>
     <Title style={{ fontSize: 32, fontWeight: 700, marginBottom: 16 }}>
@@ -236,7 +214,6 @@ function Home() {
       variant="outline" 
       c="primary.0" 
       color="primary.0"
-      // style={{ borderRadius: 0, maxWidth: 160 }}
       handleClick={() => { navigate("/products/1") }}
     >
       SEE PRODUCT
